@@ -33,12 +33,14 @@
 
     - Next
     - React
+        - tanstack/react-query
     - Typescript
     - Css Modules
 
 ## Versões utilizadas:
     - Next: 15.1.5
     - React: 19.0.0
+        - tanstack/react-query: 5.64.1
     - Typescript: 5
 
 ## 🙋🏻‍♂ Como me localizar no projeto?
@@ -56,6 +58,14 @@
 - `./src/components:` Onde está os componentes que serão reutilizados em diversas partes do código. Neste projeto temos os components:
     - Botões: Buttons
     - Cabeçalho: Header
+
+- `./src/contexts:` Os contexts são onde separamos os dados que serão compartilhados com toda a aplicação, neste projeto na primeira versão é onde está os contextos de:
+    - Modal
+    - Vale ressaltar que o arquivo 'AppProvider.tsx' é o responsável por agrupar todos os providers dos contextos e exportar como um arquivo único. 
+
+- `./src/hooks:` Está nossos hooks personalizados com as partes lógicas da aplicação.
+
+- `./src/services:` Pasta que contém as funcionalidades de serviço. Com a primeira versão temos um único arquivo "QueryClient.ts" que serve somente para criarmos um QueryClient e exportar o provider neste próprio arquivo, uma vez que assim podemos usar a diretiva 'use client' no arquivo e não no layout da aplicação.
 
 - `./src/styles:` Pasta que contém os arquivos de estilização. Nesta primeira versão temos também um único arquivo, chamado "GlobalStyles.css", este arquivo fica responsável pelos códigos que são de estilização globais do projeto.
 
@@ -81,12 +91,12 @@
 - Execute o comando para clonar o repositório:
 
     ```bash
-    git clone https://github.com/GuilhermeFranciscoPereira/Capputeeno.git
+    git clone https://github.com/GuilhermeFranciscoPereira/NotificationProtelt_FrontEnd.git
     ```
     
 - Após clonar o repositório, navegue até a pasta do projeto
     ```bash
-    cd Capputeeno
+    cd NotificationProtelt_FrontEnd
     ```
     
 
@@ -129,13 +139,13 @@
 Para você ver o processo de criação e o que foi feito em cada commit siga o passo-a-passo:
 
 #### 1 - Nessa guia em que você está, suba a tela até encontrar embaixo do botão verde um local igual o da foto abaixo e então clique nele
-!['1 passo - Como ver o processo da criação do projeto'](https://github.com/GuilhermeFranciscoPereira/Capputeeno/raw/main/src/assets/GitHub-1step.png)
+!['1 passo - Como ver o processo da criação do projeto'](https://github.com/GuilhermeFranciscoPereira/NotificationProtelt_FrontEnd/raw/main/src/assets/GitHub-1step.png)
 
 #### 2 - No lado direito dos commits você encontra clique no simbolo de <> como está na foto e então você irá encontrar como o código estava naquele momento e o readme detalhado daquele momento!
-!['2 passo - Como ver o processo da criação do projeto'](https://github.com/GuilhermeFranciscoPereira/Capputeeno/raw/main/src/assets/GitHub-2step.png)
+!['2 passo - Como ver o processo da criação do projeto'](https://github.com/GuilhermeFranciscoPereira/NotificationProtelt_FrontEnd/raw/main/src/assets/GitHub-2step.png)
 
 #### 3 - Depois de encontrar tudo que deseja, caso queira voltar para cá, você irá clicar no local em que a imagem a baixo mostra:
-!['3 passo - Como ver o processo da criação do projeto'](https://github.com/GuilhermeFranciscoPereira/Capputeeno/raw/main/src/assets/GitHub-3step.png)
+!['3 passo - Como ver o processo da criação do projeto'](https://github.com/GuilhermeFranciscoPereira/NotificationProtelt_FrontEnd/raw/main/src/assets/GitHub-3step.png)
 
 #### E então clique em main e voltará para cá!
 

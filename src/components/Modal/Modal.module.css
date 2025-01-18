@@ -1,0 +1,46 @@
+.modalSection {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.modalSection > .modalDiv {
+    background-color: #fff;
+    border: 2px solid black;
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px white;
+    padding: 20px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+}
+
+.modalSection > .modalDiv > .modalClose {
+    position: relative;
+    cursor: pointer;
+    top: -20%;
+    right: -40%;
+    border: 2px solid red;
+    border-radius: 30px;
+    padding: 5px;
+    font-size: 18px;
+}
+
+.modalSection > .modalDiv > .modalClose:hover {
+    background-color: rgba(255, 0, 0, 0.3);
+    color: white;
+}
+
+@media (max-width: 480px) {
+    .modalSection > .modalDiv > .modalClose {
+        font-size: 10px;
+    }    
+}

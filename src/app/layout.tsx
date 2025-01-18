@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import AppProvider from "@/contexts/AppProvider";
+import ToQueryClientProvider from "@/services/queryClient";
 import '../styles/GlobalStyles.css'
 
 export const metadata: Metadata = {
@@ -8,10 +10,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{children: React.ReactNode}>) {
   return (
-    <html lang="pt-br">
-      <body>
-        {children}
-      </body>
-    </html>
+    <AppProvider>
+      <ToQueryClientProvider>
+        <html lang="pt-br">
+          <body>
+            {children}
+          </body>
+        </html>
+      </ToQueryClientProvider>
+    </AppProvider>
   );
 }
