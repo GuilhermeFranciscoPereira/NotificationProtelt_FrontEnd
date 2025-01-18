@@ -53,6 +53,9 @@
 
 - `./src/assets:` Onde está todas as fotos e arquivos estáticos que vão ser usadas no projeto.
 
+- `./src/components:` Onde está os componentes que serão reutilizados em diversas partes do código. Neste projeto temos os components:
+    - Cabeçalho: Header
+
 - `./src/styles:` Pasta que contém os arquivos de estilização. Nesta primeira versão temos também um único arquivo, chamado "GlobalStyles.css", este arquivo fica responsável pelos códigos que são de estilização globais do projeto.
 
 ## ❔ Como rodar o projeto na minha máquina?

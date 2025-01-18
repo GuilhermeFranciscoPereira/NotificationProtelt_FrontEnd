@@ -1,0 +1,40 @@
+.header > .informations {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.header > .informations > h1 {
+    font-size: 20px;
+    width: 40%;
+    text-align: center;
+}
+
+.header > hr {
+    margin: 20px;
+    border: none;
+    border-bottom: 3px #1fd22a solid;
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .header > .informations > h1 {
+        font-size: 15px;
+        width: 90%;
+    }
+
+    .header > hr {
+        margin: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header > .informations > h1 {
+        font-size: 15px;
+        width: 90%;
+    }
+
+    .header > hr {
+        margin: 15px;
+    }
+}
