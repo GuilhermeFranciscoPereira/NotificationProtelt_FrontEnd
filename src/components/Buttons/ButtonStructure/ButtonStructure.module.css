@@ -1,0 +1,41 @@
+.button {
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 20px;
+    width: 30vw;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.button:hover {
+    background-color: rgba(189,214,236,255);
+    transform: scale(1.07);
+    transition: .3s;
+}
+
+.button:active {
+    background-color: rgba(189,214,236,255);
+    transform: scale(0.95);
+    transition: .1s;
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .button {
+        width: 60vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .button {
+        width: 80vw;
+    }
+
+    .button:hover {
+        transform: scale(1);
+    }
+    
+    .button:active {
+        transform: scale(1);
+    }
+}
