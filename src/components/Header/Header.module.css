@@ -14,7 +14,7 @@
 .header > hr {
     margin: 20px;
     border: none;
-    border-bottom: 3px #1fd22a solid;
+    border-bottom: 3px var(--primary-color) solid;
 }
 
 @media (min-width: 481px) and (max-width: 768px) {

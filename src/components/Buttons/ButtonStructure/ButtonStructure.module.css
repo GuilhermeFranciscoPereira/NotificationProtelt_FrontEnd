@@ -9,13 +9,13 @@
 }
 
 .button:hover {
-    background-color: rgba(189,214,236,255);
+    background-color: var(--primary-color);
     transform: scale(1.07);
     transition: .3s;
 }
 
 .button:active {
-    background-color: rgba(189,214,236,255);
+    background-color: var(--primary-color);
     transform: scale(0.95);
     transition: .1s;
 }
