@@ -13,27 +13,25 @@
     text-align: center;
 }
 
-.comeBack {
+.buttonToCaptureTheScreen {
     position: fixed;
-    top: 10px;
-    right: 10px;
-    z-index: 1000;
-    background-color: rgba(255, 0, 0, 0.8);
+    top: 20px;
+    right: 20px;
+    background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
+    padding: 15px 30px;
     font-size: 16px;
     font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px black;
     cursor: pointer;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
+    transition: .2s;
 }
-
-.comeBack:hover {
-    background-color: rgba(255, 0, 0, 0.9);
-    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3);
-    transform: scale(1.05);
+  
+.buttonToCaptureTheScreen:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
 }
 
 .main > h2 {
@@ -55,7 +53,7 @@
 .main {
     width: 95vw;
     margin: 0px auto 10px auto;
-    font-size: 12px;
+    font-size: 18px;
     display: grid;
     grid-template-areas: 
     'IndicacaoDaAutuacao IndicacaoDaAutuacao IndicacaoDaAutuacao IndicacaoDaAutuacao IndicacaoDaAutuacao IndicacaoDaAutuacao IndicacaoDaAutuacao'
@@ -112,7 +110,7 @@
 .quadraELote {grid-area: quadraELote;}
 .natureza {grid-area: natureza;}
 .TipoDaInfracao {grid-area: TipoDaInfracao;}
-.exampleInfringementPhoto {grid-area: exampleInfringementPhoto; width: 100%;}
+.exampleInfringementPhoto {grid-area: exampleInfringementPhoto; width: 100%; height: 100%;}
 .grauDaInfracao {grid-area: grauDaInfracao; text-align: center;}
 .descricaoDaInfracao {grid-area: descricaoDaInfracao;}
 .equipamentoUtilizado {grid-area: equipamentoUtilizado;}

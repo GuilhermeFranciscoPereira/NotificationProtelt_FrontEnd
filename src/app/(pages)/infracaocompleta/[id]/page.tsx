@@ -1,16 +1,36 @@
+'use client'
 import Image from "next/image";
 import VilaRealLogo from '../../../../assets/imagensForTheSite/VilaRealLogo.jpg';
 import exampleInfringementPhoto from '../../../../assets/imagensForTheSite/exampleInfringementPhoto.jpg'
+import html2canvas from 'html2canvas';
 import style from './InfracaoCompleta.module.css';
+import Link from "next/link";
 
 export default function infracaocompleta() {
+    function captureScreenshot() {
+        const content = document.getElementById('sectionToCaptureScreen');
+        if (content) {
+            html2canvas(content).then((canvas) => {
+            const imgData = canvas.toDataURL('image/png');
+
+            const link = document.createElement('a');
+            link.href = imgData;
+            link.download = 'captura_de_tela.png';
+            link.click();
+            });
+        }
+    };
+
     return (
-        <>
+    <>
+    <button className={style.buttonToCaptureTheScreen} onClick={() => captureScreenshot()}>Clique e tire print</button>
+    <section id="sectionToCaptureScreen">
         <header className={style.header}>
-            <Image src={VilaRealLogo} width={100} alt={`Foto do condomínio vila real`} quality={100}/>
+            <Link href={'/infracoes'}>
+                <Image src={VilaRealLogo} width={100} alt={`Foto do condomínio vila real`} quality={100}/>
+            </Link>
             <h1>NOTIFICAÇÃO DE AUTUAÇÃO POR INFRAÇÃO DE VELOCIDADE MÁXIMA PERMITIDA</h1>
         </header>
-        <a className={style.comeBack} href="/infracoes">Voltar para a página anterior</a>
         <main className={style.main}>
 
             <h2 className={style.IndicacaoDaAutuacao}>Indicação da autuação</h2>
@@ -184,6 +204,7 @@ export default function infracaocompleta() {
                 <span className={style.value}>QUALIMETRO</span>
             </div>
         </main>
-        </>
+    </section>
+    </>
     )
 }
