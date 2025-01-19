@@ -6,11 +6,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
 }
 
 html, body {
     min-height: 100vh;
     max-width: 100vw;
     overflow-x: hidden;
-    background: linear-gradient(135deg, var(--primary-color) 0%, white 15%, white 85%, var(--primary-color) 95%);
 }

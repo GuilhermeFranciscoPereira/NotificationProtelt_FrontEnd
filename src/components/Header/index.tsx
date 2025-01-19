@@ -1,12 +1,12 @@
 import Image from "next/image";
-import RumoLogo from '../../assets/imagensForTheSite/RumoLogo.jpg'
+import proteltLogo from '../../assets/imagensForTheSite/ProteltLogo.png'
 import styles from './Header.module.css'
 
 export default function Header() {
     return (
         <header className={styles.header}>
             <div className={styles.informations}>
-                <Image src={RumoLogo} width={200} alt={`Logo do condomínio Vila Real`} quality={100}/>
+                <Image src={proteltLogo} width={200} alt={`Logo do condomínio Vila Real`} quality={100}/>
                 <h1>NOTIFICAÇÃO DE AUTUAÇÃO POR INFRAÇÃO DE VELOCIDADE MÁXIMA PERMITIDA</h1>
             </div>
             <hr />
