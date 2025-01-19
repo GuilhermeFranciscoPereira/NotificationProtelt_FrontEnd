@@ -1,7 +1,12 @@
-import style from './ButtonStructure.module.css'
+import style from './ButtonStructure.module.css';
 
-export default function ButtonStructure({ children }: Readonly<{children: React.ReactNode}>) {
+type ButtonStructureProps = {
+    children: React.ReactNode;
+    functionOnClick?: () => void;
+}
+
+export default function ButtonStructure({children, functionOnClick}: ButtonStructureProps) {
     return (
-        <button className={style.button}>{children}</button>
+        <button className={style.button} onClick={functionOnClick}>{children}</button>
     )
 }

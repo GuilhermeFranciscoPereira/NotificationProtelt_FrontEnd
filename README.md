@@ -65,7 +65,9 @@
     - Modal
     - Vale ressaltar que o arquivo 'AppProvider.tsx' é o responsável por agrupar todos os providers dos contextos e exportar como um arquivo único. 
 
-- `./src/hooks:` Está nossos hooks personalizados com as partes lógicas da aplicação.
+- `./src/hooks:` Está nossos hooks personalizados com as partes lógicas da aplicação. As partes lógicas que temos até o momento são:
+    - ButtonsHooks
+    - ModalHooks
 
 - `./src/services:` Pasta que contém as funcionalidades de serviço. Com a primeira versão temos um único arquivo "QueryClient.ts" que serve somente para criarmos um QueryClient e exportar o provider neste próprio arquivo, uma vez que assim podemos usar a diretiva 'use client' no arquivo e não no layout da aplicação.
 

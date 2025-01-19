@@ -1,4 +1,4 @@
-import style from './Form.module.css'
+import style from './Form.module.css';
 
 export default function Form() {
     return (
@@ -18,7 +18,7 @@ export default function Form() {
             </div>
             <div className={style.formGroup}>
                 <label htmlFor="uf">UF do veículo</label>
-                <input id="uf" type="text" placeholder="SP / RJ / MG ..." required minLength={2} maxLength={2} pattern="^[A-Z]{2}$" title="Digite uma UF válida (duas letras maiúsculas)"/>
+                <input id="uf" type="text" placeholder="Exemplo: SP / RJ / MG" required minLength={2} maxLength={2} pattern="^[A-Z]{2}$" title="Digite uma UF válida (duas letras maiúsculas)"/>
             </div>
             <div className={style.formGroup}>
                 <label htmlFor="marcaModelo">Marca / Modelo do veículo</label>

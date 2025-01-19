@@ -1,12 +1,16 @@
+'use client';
+import ButtonsHooks from "@/hooks/ButtonsHooks";
 import ButtonStructure from "../ButtonStructure";
 import style from './ButtonSection.module.css';
 
 export default function ButtonSection() {
+    const {createNewInfringement} = ButtonsHooks();
+    
     return (
         <section className={style.ButtonsOptions}>
             <ButtonStructure>Visualizar todas as infrações</ButtonStructure>
             <ButtonStructure>Buscar infrações de uma placa</ButtonStructure>
-            <ButtonStructure>Criar uma nova infração</ButtonStructure>
+            <ButtonStructure functionOnClick={() => createNewInfringement()}>Criar uma nova infração</ButtonStructure>
             <ButtonStructure>Editar / Deletar infrações</ButtonStructure>
         </section>
     )
