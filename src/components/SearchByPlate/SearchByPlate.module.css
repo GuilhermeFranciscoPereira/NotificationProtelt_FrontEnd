@@ -1,0 +1,38 @@
+.sectionSearchByPlate {
+    display: flex;
+    flex-direction: column;
+    max-width: 450px;
+    margin-top: 20px;
+}
+
+.sectionSearchByPlate > label {
+    display: block;
+    text-align: start;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.sectionSearchByPlate > input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.sectionSearchByPlate > .submitBtn {
+    cursor: pointer;
+    padding: 12px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    background-color: rgba(0, 128, 0, 0.8);
+}
+
+.sectionSearchByPlate > .submitBtn:hover {
+    background-color: green;
+    transition: .3s;
+}

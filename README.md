@@ -60,6 +60,7 @@
     - Formulário de novas infrações: Form
     - Cabeçalho: Header
     - Modal: Modal
+    - Buscar informações de uma placa: SearchByPlate
 
 - `./src/contexts:` Os contexts são onde separamos os dados que serão compartilhados com toda a aplicação, neste projeto na primeira versão é onde está os contextos de:
     - Modal

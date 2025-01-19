@@ -1,4 +1,5 @@
 import Form from "@/components/Form";
+import SearchByPlate from "@/components/SearchByPlate";
 import { useModalContext } from "@/contexts/ModalContext";
 
 export default function ButtonsHooks() {
@@ -8,6 +9,11 @@ export default function ButtonsHooks() {
         toggleModal();
         toSetModalContent(<Form></Form>);
     }
+
+    function searchByPlate() {
+        toggleModal();
+        toSetModalContent(<SearchByPlate></SearchByPlate>);
+    }
     
-    return {createNewInfringement};
+    return {createNewInfringement, searchByPlate};
 }

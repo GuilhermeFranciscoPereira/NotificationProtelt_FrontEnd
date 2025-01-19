@@ -4,12 +4,12 @@ import ButtonStructure from "../ButtonStructure";
 import style from './ButtonSection.module.css';
 
 export default function ButtonSection() {
-    const {createNewInfringement} = ButtonsHooks();
+    const {createNewInfringement, searchByPlate} = ButtonsHooks();
     
     return (
         <section className={style.ButtonsOptions}>
             <ButtonStructure>Visualizar todas as infrações</ButtonStructure>
-            <ButtonStructure>Buscar infrações de uma placa</ButtonStructure>
+            <ButtonStructure functionOnClick={() => searchByPlate()}>Buscar infrações de uma placa</ButtonStructure>
             <ButtonStructure functionOnClick={() => createNewInfringement()}>Criar uma nova infração</ButtonStructure>
             <ButtonStructure>Editar / Deletar infrações</ButtonStructure>
         </section>
