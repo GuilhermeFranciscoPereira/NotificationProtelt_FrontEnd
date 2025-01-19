@@ -1,0 +1,37 @@
+.buttonsEditAndDeleteDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.buttonsEditAndDeleteDiv > button {
+    cursor: pointer;
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: none;
+    color: black;
+    transition: .3s;
+    margin: 5px 0px;
+}
+
+.buttonsEditAndDeleteDiv > .editButton {
+    background-color: lightgreen;
+}
+
+.buttonsEditAndDeleteDiv > .editButton:hover {
+    color: white;
+    background-color: green;
+}
+
+.buttonsEditAndDeleteDiv > .deleteButton {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+.buttonsEditAndDeleteDiv > .deleteButton:hover {
+    color: white;
+    background-color: red;
+}

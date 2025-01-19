@@ -52,6 +52,8 @@
 - `./src/app:` Este projeto é em Next e usando o App Router, então cada pasta é uma rota. Dentro do app temos: 
   - layout.tsx: Importa estilos globais, configura metadados (como título e descrição), e encapsula a aplicação.
   - page.tsx: Nossa primeira rota, também chamado como o nosso "home"
+  - Pasta (pages) que armazena nossas rotas:
+    - /infracoes ( Armazena todas as infrações )
 
 - `./src/assets:` Onde está todas as fotos e arquivos estáticos que vão ser usadas no projeto.
 

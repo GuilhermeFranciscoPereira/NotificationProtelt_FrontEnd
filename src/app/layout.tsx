@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import AppProvider from "@/contexts/AppProvider";
 import ToQueryClientProvider from "@/services/queryClient";
+import Header from "@/components/Header";
 import '../styles/GlobalStyles.css'
 
 export const metadata: Metadata = {
@@ -14,6 +15,7 @@ export default function RootLayout({ children }: Readonly<{children: React.React
       <ToQueryClientProvider>
         <html lang="pt-br">
           <body>
+            <Header></Header>
             {children}
           </body>
         </html>
