@@ -1,0 +1,134 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0px 10px 0px;
+}
+
+.header > h1 {
+    font-size: 20px;
+    width: 30%;
+    text-align: center;
+}
+
+.comeBack {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    background-color: rgba(255, 0, 0, 0.8);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.comeBack:hover {
+    background-color: rgba(255, 0, 0, 0.9);
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
+.main > h2 {
+    background-color: var(--primary-color);
+    text-align: center;
+    font-weight: 500;
+    border: 1px solid black;
+}
+
+.main > div {
+    border: 1px solid black;
+}
+
+.label, .value {
+    display: block;
+}
+
+/* This is a grid template area, I used 7 columns so there are 7 items in each quote */
+.main {
+    width: 95vw;
+    margin: 0px auto 10px auto;
+    font-size: 12px;
+    display: grid;
+    grid-template-areas: 
+    'IndicacaoDaAutuacao IndicacaoDaAutuacao IndicacaoDaAutuacao IndicacaoDaAutuacao IndicacaoDaAutuacao IndicacaoDaAutuacao IndicacaoDaAutuacao'
+    'orgaoautuador orgaoautuador orgaoautuador orgaoautuador codigoDoOrgao autoDaInfracao dataEnvio'
+    'IdentificacaoDoVeiculo IdentificacaoDoVeiculo IdentificacaoDoVeiculo IdentificacaoDoVeiculo IdentificacaoDoVeiculo IdentificacaoDoVeiculo IdentificacaoDoVeiculo'
+    'placa municipio uf marcaModelo cor especieTipo pais'
+    'IdentificacaoDoLocalDaInfracao IdentificacaoDoLocalDaInfracao IdentificacaoDoLocalDaInfracao IdentificacaoDoLocalDaInfracao IdentificacaoDoLocalDaInfracao IdentificacaoDoLocalDaInfracao IdentificacaoDoLocalDaInfracao'
+    'localDaInfracao localDaInfracao localDaInfracao localDaInfracao municipio2 uf2 codigoDoRadar'
+    'Condutor Condutor Responsavel Responsavel Destino Destino Destino'
+    'nome nome proprietario proprietario quadraELote natureza natureza'
+    'TipoDaInfracao TipoDaInfracao TipoDaInfracao TipoDaInfracao TipoDaInfracao exampleInfringementPhoto exampleInfringementPhoto'
+    'grauDaInfracao grauDaInfracao grauDaInfracao grauDaInfracao grauDaInfracao exampleInfringementPhoto exampleInfringementPhoto'
+    'descricaoDaInfracao descricaoDaInfracao descricaoDaInfracao descricaoDaInfracao descricaoDaInfracao exampleInfringementPhoto exampleInfringementPhoto'
+    'equipamentoUtilizado equipamentoUtilizado equipamentoUtilizado equipamentoUtilizado equipamentoUtilizado exampleInfringementPhoto exampleInfringementPhoto'
+    'marca marca marca marca marca exampleInfringementPhoto exampleInfringementPhoto'
+    'modelo modelo modelo modelo modelo exampleInfringementPhoto exampleInfringementPhoto'
+    'tipoDeMedicao tipoDeMedicao tipoDeMedicao tipoDeMedicao tipoDeMedicao limiteRegulamentado limiteRegulamentado'
+    'medicaoRealizada medicaoRealizada medicaoRealizada medicaoRealizada medicaoRealizada dataHoraDaInfracao dataHoraDaInfracao'
+    'valor valor valor valor valor recurso recurso'
+    'nothing nothing nothing nothing nothing nothing nothing'
+    'RegulamentoInterno RegulamentoInterno RegulamentoInterno RegulamentoInterno RegulamentoInterno RegulamentoInterno RegulamentoInterno'
+    'capVIItem2 capVIItem2 capVIItem2 capVIItem2 capVIItem2 capVIItem2 capVIItem2'
+    'nota nota nota nota nota nota nota'
+    'notaInformations notaInformations notaInformations notaInformations notaInformations notaInformations notaInformations'
+    'certificadoDeAfericao certificadoDeAfericao certificadoDeAfericao certificadoDeAfericao certificadoDeAfericao certificadoDeAfericao certificadoDeAfericao'
+    'certificado certificado certificado certificado certificado laboratorio laboratorio'
+    ;
+}
+
+/* Here it´s the identification to the grid template area */
+.IdentificacaoDoVeiculo {grid-area: IdentificacaoDoVeiculo;}
+.orgaoautuador {grid-area: orgaoautuador;}
+.codigoDoOrgao {grid-area: codigoDoOrgao;}
+.autoDaInfracao {grid-area: autoDaInfracao;}
+.dataEnvio {grid-area: dataEnvio;}
+.IndicacaoDaAutuacao {grid-area: IndicacaoDaAutuacao;}
+.placa {grid-area: placa;}
+.municipio {grid-area: municipio;}
+.uf {grid-area: uf;}
+.marcaModelo {grid-area: marcaModelo;}
+.cor {grid-area: cor;}
+.especieTipo {grid-area: especieTipo;}
+.pais {grid-area: pais;}
+.IdentificacaoDoLocalDaInfracao {grid-area: IdentificacaoDoLocalDaInfracao;}
+.localDaInfracao {grid-area: localDaInfracao;}
+.municipio2 {grid-area: municipio2;}
+.uf2 {grid-area: uf2;}
+.codigoDoRadar {grid-area: codigoDoRadar;}
+.Condutor {grid-area: Condutor;}
+.Responsavel {grid-area: Responsavel;}
+.Destino {grid-area: Destino;}
+.nome {grid-area: nome;}
+.proprietario {grid-area: proprietario;}
+.quadraELote {grid-area: quadraELote;}
+.natureza {grid-area: natureza;}
+.TipoDaInfracao {grid-area: TipoDaInfracao;}
+.exampleInfringementPhoto {grid-area: exampleInfringementPhoto; width: 100%;}
+.grauDaInfracao {grid-area: grauDaInfracao; text-align: center;}
+.descricaoDaInfracao {grid-area: descricaoDaInfracao;}
+.equipamentoUtilizado {grid-area: equipamentoUtilizado;}
+.marca {grid-area: marca;}
+.modelo {grid-area: modelo;}
+.tipoDeMedicao {grid-area: tipoDeMedicao;}
+.limiteRegulamentado {grid-area: limiteRegulamentado;}
+.medicaoRealizada {grid-area: medicaoRealizada;}
+.dataHoraDaInfracao {grid-area: dataHoraDaInfracao;}
+.valor {grid-area: valor;}
+.recurso {grid-area: recurso;}
+.nothing {grid-area: nothing;}
+.RegulamentoInterno {grid-area: RegulamentoInterno;}
+.capVIItem2 {grid-area: capVIItem2;}
+.nota {grid-area: nota;}
+.notaInformations {grid-area: notaInformations;}
+.certificadoDeAfericao {grid-area: certificadoDeAfericao;}
+.certificado {grid-area: certificado;}
+.laboratorio {grid-area: laboratorio;}

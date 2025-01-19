@@ -4,11 +4,36 @@ import style from './Infracoes.module.css';
 import exampleInfringementPhoto from '../../../assets/imagensForTheSite/exampleInfringementPhoto.jpg';
 import ButtonsHooks from '@/hooks/ButtonsHooks';
 import ModalComponent from '@/components/Modal';
+import Header from '@/components/Header';
 
 export default function infracoes() {
-    const {editAndDeleteInfringement} = ButtonsHooks();
+    const {editAndDeleteInfringement, showTheFullInfringement} = ButtonsHooks();
+    const infringements: Array<{plate: string, speed: string, location: string}> = [
+        { plate: 'ABC1D23', speed: '54 KM/H', location: 'Q1 L1' },
+        { plate: 'XYZ9Z88', speed: '70 KM/H', location: 'Q2 L2' },
+        { plate: 'DEF4G56', speed: '80 KM/H', location: 'Q3 L3' },
+        { plate: 'LMN7H56', speed: '50 KM/H', location: 'Q4 L4' },
+        { plate: 'JKL0P12', speed: '65 KM/H', location: 'Q5 L5' },
+        { plate: 'GHI1J23', speed: '55 KM/H', location: 'Q6 L6' },
+        { plate: 'TUV9X80', speed: '85 KM/H', location: 'Q7 L7' },
+        { plate: 'PQR2S44', speed: '40 KM/H', location: 'Q8 L8' },
+        { plate: 'STU3D98', speed: '95 KM/H', location: 'Q9 L9' },
+        { plate: 'VWX5K34', speed: '75 KM/H', location: 'Q10 L10' },
+        { plate: 'YZA1C00', speed: '60 KM/H', location: 'Q11 L11' },
+        { plate: 'LMN2P55', speed: '65 KM/H', location: 'Q12 L12' },
+        { plate: 'BCT6M43', speed: '50 KM/H', location: 'Q13 L13' },
+        { plate: 'OPQ8R12', speed: '85 KM/H', location: 'Q14 L14' },
+        { plate: 'XYZ0W12', speed: '40 KM/H', location: 'Q15 L15' },
+        { plate: 'WXY5L00', speed: '80 KM/H', location: 'Q16 L16' },
+        { plate: 'UVW9X15', speed: '70 KM/H', location: 'Q17 L17' },
+        { plate: 'NOP2K67', speed: '90 KM/H', location: 'Q18 L18' },
+        { plate: 'TUV7C12', speed: '65 KM/H', location: 'Q19 L19' },
+        { plate: 'JKL5R44', speed: '50 KM/H', location: 'Q20 L20' }
+      ];
+
     return (
         <>
+        <Header></Header>
         <ModalComponent></ModalComponent>
         <section className={style.searchAndFilterSection}>
                 <form className={style.searchForm}>
@@ -26,202 +51,23 @@ export default function infracoes() {
             </div>
         </section>
         <section className={style.infringementSection}>
-            <div className={style.cardInfringementDiv}>
+            {infringements.map((infringement, index) => (
+                <div className={style.cardInfringementDiv} key={index}>
                 <div className='driverInformations'>
-                    <h1>Placa: ABC1D23</h1>
-                    <p>Velocidade: 60 KM/H</p>
-                    <p>Quadra e lote: Q1 L1</p>
+                    <h1>Placa: {infringement.plate}</h1>
+                    <p>Velocidade: {infringement.speed}</p>
+                    <p>Quadra e lote: {infringement.location}</p>
                 </div>
-                <Image src={exampleInfringementPhoto} width={200} alt={`Foto da infração junto da placa do veículo`} quality={100} />
-                <button>Visualizar infração completa</button>
-                <button onClick={() => {editAndDeleteInfringement(`ABC1D23`)}}>EDITAR / DELETAR</button>
-            </div>
-
-            <div className={style.cardInfringementDiv}>
-                <div className='driverInformations'>
-                    <h1>Placa: DEF2G34</h1>
-                    <p>Velocidade: 75 KM/H</p>
-                    <p>Quadra e lote: Q2 L2</p>
+                <Image
+                    src={exampleInfringementPhoto}
+                    width={200}
+                    alt={`Foto da infração junto da placa ${infringement.plate}`}
+                    quality={100}
+                />
+                <button onClick={() => showTheFullInfringement(index.toString())}>Visualizar infração completa</button>
+                <button onClick={() => editAndDeleteInfringement(infringement.plate)}>EDITAR / DELETAR</button>
                 </div>
-                <Image src={exampleInfringementPhoto} width={200} alt={`Foto da infração junto da placa do veículo`} quality={100} />
-                <button>Visualizar infração completa</button>
-                <button onClick={() => {editAndDeleteInfringement(`DEF2G34`)}}>EDITAR / DELETAR</button>
-            </div>
-
-            <div className={style.cardInfringementDiv}>
-                <div className='driverInformations'>
-                    <h1>Placa: GHI3J45</h1>
-                    <p>Velocidade: 90 KM/H</p>
-                    <p>Quadra e lote: Q3 L3</p>
-                </div>
-                <Image src={exampleInfringementPhoto} width={200} alt={`Foto da infração junto da placa do veículo`} quality={100} />
-                <button>Visualizar infração completa</button>
-                <button onClick={() => {editAndDeleteInfringement(`GHI3J45`)}}>EDITAR / DELETAR</button>
-            </div>
-
-            <div className={style.cardInfringementDiv}>
-                <div className='driverInformations'>
-                    <h1>Placa: JKL4M56</h1>
-                    <p>Velocidade: 85 KM/H</p>
-                    <p>Quadra e lote: Q4 L4</p>
-                </div>
-                <Image src={exampleInfringementPhoto} width={200} alt={`Foto da infração junto da placa do veículo`} quality={100} />
-                <button>Visualizar infração completa</button>
-                <button onClick={() => {editAndDeleteInfringement(`JKL4M56`)}}>EDITAR / DELETAR</button>
-            </div>
-
-            <div className={style.cardInfringementDiv}>
-                <div className='driverInformations'>
-                    <h1>Placa: MNO5P67</h1>
-                    <p>Velocidade: 95 KM/H</p>
-                    <p>Quadra e lote: Q5 L5</p>
-                </div>
-                <Image src={exampleInfringementPhoto} width={200} alt={`Foto da infração junto da placa do veículo`} quality={100} />
-                <button>Visualizar infração completa</button>
-                <button onClick={() => {editAndDeleteInfringement(`MNO5P67`)}}>EDITAR / DELETAR</button>
-            </div>
-
-            <div className={style.cardInfringementDiv}>
-                <div className='driverInformations'>
-                    <h1>Placa: PQR6S78</h1>
-                    <p>Velocidade: 65 KM/H</p>
-                    <p>Quadra e lote: Q6 L6</p>
-                </div>
-                <Image src={exampleInfringementPhoto} width={200} alt={`Foto da infração junto da placa do veículo`} quality={100} />
-                <button>Visualizar infração completa</button>
-                <button onClick={() => {editAndDeleteInfringement(`PQR6S78`)}}>EDITAR / DELETAR</button>
-            </div>
-
-            <div className={style.cardInfringementDiv}>
-                <div className='driverInformations'>
-                    <h1>Placa: STU7V89</h1>
-                    <p>Velocidade: 110 KM/H</p>
-                    <p>Quadra e lote: Q7 L7</p>
-                </div>
-                <Image src={exampleInfringementPhoto} width={200} alt={`Foto da infração junto da placa do veículo`} quality={100} />
-                <button>Visualizar infração completa</button>
-                <button onClick={() => {editAndDeleteInfringement(`STU7V89`)}}>EDITAR / DELETAR</button>
-            </div>
-
-            <div className={style.cardInfringementDiv}>
-                <div className='driverInformations'>
-                    <h1>Placa: VWX8Y90</h1>
-                    <p>Velocidade: 70 KM/H</p>
-                    <p>Quadra e lote: Q8 L8</p>
-                </div>
-                <Image src={exampleInfringementPhoto} width={200} alt={`Foto da infração junto da placa do veículo`} quality={100} />
-                <button>Visualizar infração completa</button>
-                <button onClick={() => {editAndDeleteInfringement(`VWX8Y90`)}}>EDITAR / DELETAR</button>
-            </div>
-
-            <div className={style.cardInfringementDiv}>
-                <div className='driverInformations'>
-                    <h1>Placa: YZA9B01</h1>
-                    <p>Velocidade: 80 KM/H</p>
-                    <p>Quadra e lote: Q9 L9</p>
-                </div>
-                <Image src={exampleInfringementPhoto} width={200} alt={`Foto da infração junto da placa do veículo`} quality={100} />
-                <button>Visualizar infração completa</button>
-                <button onClick={() => {editAndDeleteInfringement(`YZA9B01`)}}>EDITAR / DELETAR</button>
-            </div>
-
-            <div className={style.cardInfringementDiv}>
-                <div className='driverInformations'>
-                    <h1>Placa: CDE0F12</h1>
-                    <p>Velocidade: 120 KM/H</p>
-                    <p>Quadra e lote: Q10 L10</p>
-                </div>
-                <Image src={exampleInfringementPhoto} width={200} alt={`Foto da infração junto da placa do veículo`} quality={100} />
-                <button>Visualizar infração completa</button>
-                <button onClick={() => {editAndDeleteInfringement(`CDE0F12`)}}>EDITAR / DELETAR</button>
-            </div>
-            <div className={style.cardInfringementDiv}>
-                <div className='driverInformations'>
-                    <h1>Placa: ABC1D23</h1>
-                    <p>Velocidade: 60 KM/H</p>
-                    <p>Quadra e lote: Q1 L1</p>
-                </div>
-                <Image src={exampleInfringementPhoto} width={200} alt={`Foto da infração junto da placa do veículo`} quality={100} />
-                <button>Visualizar infração completa</button>
-                <button onClick={() => {editAndDeleteInfringement(`ABC1D23`)}}>EDITAR / DELETAR</button>
-            </div>
-
-            <div className={style.cardInfringementDiv}>
-                <div className='driverInformations'>
-                    <h1>Placa: DEF2G34</h1>
-                    <p>Velocidade: 75 KM/H</p>
-                    <p>Quadra e lote: Q2 L2</p>
-                </div>
-                <Image src={exampleInfringementPhoto} width={200} alt={`Foto da infração junto da placa do veículo`} quality={100} />
-                <button>Visualizar infração completa</button>
-                <button onClick={() => {editAndDeleteInfringement(`DEF2G34`)}}>EDITAR / DELETAR</button>
-            </div>
-
-            <div className={style.cardInfringementDiv}>
-                <div className='driverInformations'>
-                    <h1>Placa: GHI3J45</h1>
-                    <p>Velocidade: 90 KM/H</p>
-                    <p>Quadra e lote: Q3 L3</p>
-                </div>
-                <Image src={exampleInfringementPhoto} width={200} alt={`Foto da infração junto da placa do veículo`} quality={100} />
-                <button>Visualizar infração completa</button>
-                <button onClick={() => {editAndDeleteInfringement(`GHI3J45`)}}>EDITAR / DELETAR</button>
-            </div>
-
-            <div className={style.cardInfringementDiv}>
-                <div className='driverInformations'>
-                    <h1>Placa: JKL4M56</h1>
-                    <p>Velocidade: 85 KM/H</p>
-                    <p>Quadra e lote: Q4 L4</p>
-                </div>
-                <Image src={exampleInfringementPhoto} width={200} alt={`Foto da infração junto da placa do veículo`} quality={100} />
-                <button>Visualizar infração completa</button>
-                <button onClick={() => {editAndDeleteInfringement(`JKL4M56`)}}>EDITAR / DELETAR</button>
-            </div>
-
-            <div className={style.cardInfringementDiv}>
-                <div className='driverInformations'>
-                    <h1>Placa: MNO5P67</h1>
-                    <p>Velocidade: 95 KM/H</p>
-                    <p>Quadra e lote: Q5 L5</p>
-                </div>
-                <Image src={exampleInfringementPhoto} width={200} alt={`Foto da infração junto da placa do veículo`} quality={100} />
-                <button>Visualizar infração completa</button>
-                <button onClick={() => {editAndDeleteInfringement(`MNO5P67`)}}>EDITAR / DELETAR</button>
-            </div>
-
-            <div className={style.cardInfringementDiv}>
-                <div className='driverInformations'>
-                    <h1>Placa: PQR6S78</h1>
-                    <p>Velocidade: 65 KM/H</p>
-                    <p>Quadra e lote: Q6 L6</p>
-                </div>
-                <Image src={exampleInfringementPhoto} width={200} alt={`Foto da infração junto da placa do veículo`} quality={100} />
-                <button>Visualizar infração completa</button>
-                <button onClick={() => {editAndDeleteInfringement(`PQR6S78`)}}>EDITAR / DELETAR</button>
-            </div>
-
-            <div className={style.cardInfringementDiv}>
-                <div className='driverInformations'>
-                    <h1>Placa: STU7V89</h1>
-                    <p>Velocidade: 110 KM/H</p>
-                    <p>Quadra e lote: Q7 L7</p>
-                </div>
-                <Image src={exampleInfringementPhoto} width={200} alt={`Foto da infração junto da placa do veículo`} quality={100} />
-                <button>Visualizar infração completa</button>
-                <button onClick={() => {editAndDeleteInfringement(`STU7V89`)}}>EDITAR / DELETAR</button>
-            </div>
-
-            <div className={style.cardInfringementDiv}>
-                <div className='driverInformations'>
-                    <h1>Placa: VWX8Y90</h1>
-                    <p>Velocidade: 70 KM/H</p>
-                    <p>Quadra e lote: Q8 L8</p>
-                </div>
-                <Image src={exampleInfringementPhoto} width={200} alt={`Foto da infração junto da placa do veículo`} quality={100} />
-                <button>Visualizar infração completa</button>
-                <button onClick={() => {editAndDeleteInfringement(`VWX8Y90`)}}>EDITAR / DELETAR</button>
-            </div>
+            ))}
         </section>
         </>
     )

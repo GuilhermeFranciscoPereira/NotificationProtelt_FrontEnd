@@ -1,0 +1,189 @@
+import Image from "next/image";
+import VilaRealLogo from '../../../../assets/imagensForTheSite/VilaRealLogo.jpg';
+import exampleInfringementPhoto from '../../../../assets/imagensForTheSite/exampleInfringementPhoto.jpg'
+import style from './InfracaoCompleta.module.css';
+
+export default function infracaocompleta() {
+    return (
+        <>
+        <header className={style.header}>
+            <Image src={VilaRealLogo} width={100} alt={`Foto do condomínio vila real`} quality={100}/>
+            <h1>NOTIFICAÇÃO DE AUTUAÇÃO POR INFRAÇÃO DE VELOCIDADE MÁXIMA PERMITIDA</h1>
+        </header>
+        <a className={style.comeBack} href="/infracoes">Voltar para a página anterior</a>
+        <main className={style.main}>
+
+            <h2 className={style.IndicacaoDaAutuacao}>Indicação da autuação</h2>
+            <div className={style.orgaoautuador}>
+                <span className={style.label}>Órgão Autuador</span>
+                <span className={style.value}>ASSOCIAÇÃO FAZENDA VILA REAL DE ITU</span>
+            </div>
+            <div className={style.codigoDoOrgao}>
+                <span className={style.label}>Código do Órgão</span>
+                <span className={style.value}>001</span>
+            </div>
+            <div className={style.autoDaInfracao}>
+                <span className={style.label}>Auto da Infração</span>
+                <span className={style.value}>112</span>
+            </div>
+            <div className={style.dataEnvio}>
+                <span className={style.label}>Data Envio</span>
+                <span className={style.value}>28/02/2024</span>
+            </div>
+
+            <h2 className={style.IdentificacaoDoVeiculo}>Identificação do veículo</h2>
+            <div className={style.placa}>
+                <span className={style.label}>Placa</span>
+                <span className={style.value}>ITU</span>
+            </div>
+            <div className={style.municipio}>
+                <span className={style.label}>Município</span>
+                <span className={style.value}>ITU</span>
+            </div>
+            <div className={style.uf}>
+                <span className={style.label}>UF</span>
+                <span className={style.value}>SP</span>
+            </div>
+            <div className={style.marcaModelo}>
+                <span className={style.label}>Marca / Modelo</span>
+                <span className={style.value}>-</span>
+            </div>
+            <div className={style.cor}>
+                <span className={style.label}>Cor</span>
+                <span className={style.value}>-</span>
+            </div>
+            <div className={style.especieTipo}>
+                <span className={style.label}>Espécie / Tipo</span>
+                <span className={style.value}>-</span>
+            </div>
+            <div className={style.pais}>
+                <span className={style.label}>País</span>
+                <span className={style.value}>BR</span>
+            </div>
+
+            <h2 className={style.IdentificacaoDoLocalDaInfracao}>Identificação do local da infração</h2>
+            <div className={style.localDaInfracao}>
+                <span className={style.label}>Local da Infração</span>
+                <span className={style.value}>RUA DOS INHAMBUS</span>
+            </div>
+            <div className={style.municipio2}>
+                <span className={style.label}>Município</span>
+                <span className={style.value}>ITU</span>
+            </div>
+            <div className={style.uf2}>
+                <span className={style.label}>UF</span>
+                <span className={style.value}>SP</span>
+            </div>
+            <div className={style.codigoDoRadar}>
+                <span className={style.label}>Código do Radar</span>
+                <span className={style.value}>000001</span>
+            </div>
+
+            <h2 className={style.Condutor}>Condutor</h2>
+            <div className={style.nome}>
+                <span className={style.label}>Nome</span>
+                <span className={style.value}>-</span>
+            </div>
+
+            <h2 className={style.Responsavel}>Responsável</h2>
+            <div className={style.proprietario}>
+                <span className={style.label}>Proprietário</span>
+                <span className={style.value}>-</span>
+            </div>
+
+            <h2 className={style.Destino}>Destino</h2>
+            <div className={style.quadraELote}>
+                <span className={style.label}>Quadra e Lote</span>
+                <span className={style.value}>Q0 L0</span>
+            </div>
+            <div className={style.natureza}>
+                <span className={style.label}>Natureza</span>
+                <span className={style.value}>-</span>
+            </div>
+
+            <Image className={style.exampleInfringementPhoto} src={exampleInfringementPhoto} alt={`Foto da infração junto da placa do veículo`} quality={100}/>
+
+            <h2 className={style.TipoDaInfracao}>Tipo da infração</h2>
+            <div className={style.grauDaInfracao}>
+                <span className={style.label}>Grau da infração</span>
+                <span className={style.value}>1º <span style={{fontSize: "40px", fontWeight: "bolder"}}>NOTIFICAÇÃO</span></span>
+            </div>
+            <div className={style.descricaoDaInfracao}>
+                <span className={style.label}>Descrição da infração:</span>
+                <span className={style.value}>Transitar em velocidade superior a máxima permitida no condomínio.</span>
+            </div>
+            <div className={style.equipamentoUtilizado}>
+                <span className={style.label}>Equipamento utilizado:</span>
+                <span className={style.value} style={{textAlign: "end"}}>MEDIDOR DE VELOCIDADE (RADAR)</span>
+            </div>
+            <div className={style.marca}>
+                <span className={style.label}>Marca:</span>
+                <span className={style.value} style={{textAlign: "end"}}>SPD</span>
+            </div>
+            <div className={style.modelo}>
+                <span className={style.label}>Modelo:</span>
+                <span className={style.value} style={{textAlign: "end"}}>SPEED-SENSOR-FVR-01</span>
+            </div>
+            <div className={style.tipoDeMedicao}>
+                <span className={style.label}>Tipo de Medição:</span>
+                <span className={style.value} style={{textAlign: "end"}}>SENSOR DE VELOCIDADE</span>
+            </div>
+            <div className={style.limiteRegulamentado}>
+                <span className={style.label}>Limite Regulamentado:</span>
+                <span className={style.value} style={{textAlign: "end"}}>40 KM/H</span>
+            </div>
+            <div className={style.medicaoRealizada}>
+                <span className={style.label}>Medição Realizada:</span>
+                <span className={style.value} style={{textAlign: "end"}}>54 KM/H</span>
+            </div>
+            <div className={style.dataHoraDaInfracao}>
+                <span className={style.label}>Data / Hora da infração:</span>
+                <span className={style.value} style={{textAlign: "end"}}>26/01/2024 - 11:37:02H</span>
+            </div>
+            <div className={style.valor}>
+                <span className={style.label}>Valor:</span>
+                <span className={style.value} style={{textAlign: "end"}}>0,00</span>
+            </div>
+            <div className={style.recurso}>
+                <span className={style.label}>Recurso:</span>
+                <span className={style.value} style={{textAlign: "end"}}>Deve ser encaminhado para Administração através do e-mail:
+                atendimento@fazendavilareal.com.br</span>
+            </div>
+            <div className={style.nothing}>
+                <span className={style.label}></span>
+                <span className={style.value} style={{padding: "10px"}}></span>
+            </div>
+
+            <h2 className={style.RegulamentoInterno}>Regulamento interno</h2>
+            <div className={style.capVIItem2}>
+                <span className={style.label} style={{color: "red"}}>CAP. VI – ITEM 2 – LETRA A:</span>
+                <span className={style.value}>
+                    •	A VELOCIDADE MÁXIMA PERMITIDA NAS DEPENDÊNCIAS DO LOTEAMENTO FECHADO É DE 40 KM/H, SEMPRE RESPEITADOS OS LIMITES DAS PLACAS DE SINALIZAÇÃO. A ADMINISTRAÇÃO PODERÁ A QUALQUER TEMPO ADOTAR MEDIDAS E/OU FORMAS DE AVALIAÇÃO MAIS VARIADAS E CONVENIENTES PARA CONTROLE DE VELOCIDADE.
+                </span>
+            </div>
+
+            <h2 className={style.nota}>NOTA</h2>
+            <div className={style.notaInformations}>
+                <span className={style.value}>
+                    <p style={{color: "red"}}>•	A VELOCIDADE REGISTRADA PELO RADAR É SEMPRE DE 4 KM/H A 5 KM/H ABAIXO DA VELOCIDADE REAL DO VEÍCULO.</p>
+                    <p style={{color: "red"}}>•	O RADAR REGISTRA O EXCESSO DE VELOCIDADE NOS DOIS SENTIDOS DA VIA.</p>
+                    <p>•	INFORMAMOS QUE AS IMAGENS AQUI APRESENTADAS SÃO EDITADAS DEVIDO AO TIPO COMPLETO DE APROXIMAÇÃO, PASSAGEM E AFASTAMENTO DO VEÍCULO POR APROXIMADAMENTE UM TEMPO DE 10 A 20 SEGUNDOS.</p>
+                    <p>•	AS IMAGENS SÃO RESULTADO DE ANÁLISES POR AMOSTRAGEM E TÊM O MOMENTO EXATO DA OCORRÊNCIA DA INFRAÇÃO.</p>
+                    <p>•	QUALQUER INDICAÇÃO DE FALHA NO REGISTRO DA VELOCIDADE, GERA O DESCARTE DA OCORRÊNCIA.</p>
+                    <p>•	VOCÊ ESTÁ À DISPOSIÇÃO PARA CONSULTA E ANÁLISE CONSTANTE, CASO HAJA INTERESSE.</p>
+                </span>
+            </div>
+
+            <h2 className={style.certificadoDeAfericao}>CERTIFICADO DE AFERIÇÃO</h2>
+            <div className={style.certificado}>
+                <span className={style.label}>Certificado Nº:</span>
+                <span className={style.value}>0589-1501</span>
+            </div>
+            <div className={style.laboratorio}>
+                <span className={style.label}>Laboratório:</span>
+                <span className={style.value}>QUALIMETRO</span>
+            </div>
+        </main>
+        </>
+    )
+}

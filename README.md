@@ -54,6 +54,7 @@
   - page.tsx: Nossa primeira rota, também chamado como o nosso "home"
   - Pasta (pages) que armazena nossas rotas:
     - /infracoes ( Armazena todas as infrações )
+    - /infracaocompleta/[id] ( Local onde fica disponível todos os detalhes da infração)
 
 - `./src/assets:` Onde está todas as fotos e arquivos estáticos que vão ser usadas no projeto.
 
