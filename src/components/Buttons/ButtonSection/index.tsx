@@ -11,7 +11,6 @@ export default function ButtonSection() {
             <ButtonStructure>Visualizar todas as infrações</ButtonStructure>
             <ButtonStructure functionOnClick={() => searchByPlate()}>Buscar infrações de uma placa</ButtonStructure>
             <ButtonStructure functionOnClick={() => createNewInfringement()}>Criar uma nova infração</ButtonStructure>
-            <ButtonStructure>Editar / Deletar infrações</ButtonStructure>
         </section>
     )
 }
