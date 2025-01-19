@@ -1,4 +1,4 @@
-# <img src="./src/assets/imagensForTheSite/RumoLogo.jpg" width="35" /> Sistema de notificações - Protelt <img src="./src/assets/imagensForTheSite/RumoLogo.jpg" width="35" />
+# <img src="./src/assets/imagensForTheSite/RumoLogo.jpg" width="50" /> Sistema de notificações - Protelt <img src="./src/assets/imagensForTheSite/RumoLogo.jpg" width="50" />
 
 ## 📌 Sobre o sistema
 
@@ -57,7 +57,9 @@
 
 - `./src/components:` Onde está os componentes que serão reutilizados em diversas partes do código. Neste projeto temos os components:
     - Botões: Buttons
+    - Formulário de novas infrações: Form
     - Cabeçalho: Header
+    - Modal: Modal
 
 - `./src/contexts:` Os contexts são onde separamos os dados que serão compartilhados com toda a aplicação, neste projeto na primeira versão é onde está os contextos de:
     - Modal
