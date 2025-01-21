@@ -5,10 +5,6 @@ export default function Form() {
         <form className={style.formContainer}>
             <h2>CADASTRO DE INFRAÇÕES</h2>
             <div className={style.formGroup}>
-                <label htmlFor="autoInfra">Auto da infração</label>
-                <input id="autoInfra" type="number" placeholder="Auto da infração" required min={0}/>
-            </div>
-            <div className={style.formGroup}>
                 <label htmlFor="placa">Placa do veículo</label>
                 <input id="placa" type="text" placeholder="ABC1D23" required minLength={7} maxLength={7} pattern="^[A-Za-z]{3}[0-9]{1}[A-Za-z]{1}[0-9]{2}$" title="Digite uma placa válida no formato ABC1D23"  />
             </div>
@@ -34,19 +30,19 @@ export default function Form() {
             </div>
             <div className={style.formGroup}>
                 <label htmlFor="nomeCondutor">Nome do condutor</label>
-                <input id="nomeCondutor" type="text" placeholder="Nome do condutor" required pattern="[A-Za-zÀ-ÿ\s]+" title="Digite apenas letras" />
+                <input id="nomeCondutor" type="text" placeholder="Nome do condutor" pattern="[A-Za-zÀ-ÿ\s]+" title="Digite apenas letras" />
             </div>
             <div className={style.formGroup}>
                 <label htmlFor="proprietario">Proprietário responsável</label>
-                <input id="proprietario" type="text" placeholder="Proprietário" required pattern="[A-Za-zÀ-ÿ\s]+" title="Digite apenas letras" />
+                <input id="proprietario" type="text" placeholder="Proprietário" pattern="[A-Za-zÀ-ÿ\s]+" title="Digite apenas letras" />
             </div>
             <div className={style.formGroup}>
                 <label htmlFor="quadraLote">Quadra e Lote</label>
-                <input id="quadraLote" type="text" placeholder="Quadra e Lote" required pattern="^Q\d+ L\d+$" title="Digite no formato: Q0 L0"/>
+                <input id="quadraLote" type="text" placeholder="Quadra e Lote" pattern="^Q\d+ L\d+$" title="Digite no formato: Q0 L0"/>
             </div>
             <div className={style.formGroup}>
                 <label htmlFor="natureza">Natureza</label>
-                <input id="natureza" type="text" placeholder="Natureza" required />
+                <input id="natureza" type="text" placeholder="Natureza" />
             </div>
             <div className={style.formGroup}>
                 <label htmlFor="grauInfracao">Grau da infração</label>

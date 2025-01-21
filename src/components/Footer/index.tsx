@@ -1,5 +1,5 @@
 import Image from "next/image";
-import logoRumoRadares from '../../assets/imagensForTheSite/RumoLogo.jpg';
+import logoRumoRadares from '../../assets/imagensForTheSite/RumoLogo.png';
 import style from './Footer.module.css';
 
 export default function Footer() {

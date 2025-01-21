@@ -1,4 +1,4 @@
-# <img src="./src/assets/imagensForTheSite/RumoLogo.jpg" width="50" /> Sistema de notificações - Protelt <img src="./src/assets/imagensForTheSite/RumoLogo.jpg" width="50" />
+# <img src="./src/assets/imagensForTheSite/RumoLogo.png" width="50" /> Sistema de notificações - Protelt <img src="./src/assets/imagensForTheSite/RumoLogo.png" width="50" />
 
 ## 📌 Sobre o sistema
 
@@ -24,7 +24,7 @@
 ## 🖥 Tecnologias Utilizadas
 <div align='center'>
 
-!['NextJS'](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+!['NextJSLogo'](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
 !['ReactLogo'](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 !['TypescriptLogo'](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 !['CssLogo'](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
