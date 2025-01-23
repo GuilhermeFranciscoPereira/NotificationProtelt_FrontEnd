@@ -1,10 +1,13 @@
 'use client';
 import { ModalProvider } from "./ModalContext";
+import { SearchByPlateProvider } from "./SearchByPlateContext";
 
 const AppProvider = ({children}: {children: React.ReactNode}) => {
     return (
         <ModalProvider>
-            {children}
+            <SearchByPlateProvider>
+                {children}
+            </SearchByPlateProvider>
         </ModalProvider>
     )
 }

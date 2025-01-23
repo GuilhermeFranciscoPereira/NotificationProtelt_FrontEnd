@@ -1,41 +1,16 @@
-'use client';
-import { useQuery } from 'react-query';
-import axios from 'axios';
-import Image from 'next/image';
-import style from './GetAllInfringiment.module.css';
+import { useSearchByPlateContext } from '@/contexts/SearchByPlateContext';
 import ButtonsHooks from '@/hooks/ButtonsHooks';
+import Image from 'next/image';
+import style from '../useGetAllInfringiment.tsx/GetAllInfringiment.module.css';
 
-type infringimentsProps = {
-    autoDaInfracao: number;
-    placa: string;
-    municipio: string;
-    uf: string;
-    marcaModelo: string;
-    cor: string;
-    especieTipo: string;
-    localDaInfracao: string;
-    nomeCondutor: string;
-    proprietario: string;
-    quadraLote: string;
-    naturezaDoVeiculo: string;
-    grauDaInfracao: string;
-    medicaoRealizadaKMH: number;
-    fotoInfracao: string;
-    dataHoraDaInfracao: string;
-    valor: number;
-}
-
-export default function GetAllInfringiment() {
+export default function GetByPlate() {
+    const {SearchByPlateContent} = useSearchByPlateContext();
     const {showTheFullInfringement, editAndDeleteInfringement} = ButtonsHooks();
-    const { data, isFetching } = useQuery<Array<infringimentsProps>>('infringimentsFetch', async () => {
-        const response = await axios.get('http://localhost:7777/allInfringement');
-        return response.data;
-    }, { refetchOnWindowFocus: false });
 
     return (
         <>
-            {isFetching && <h1 className={style.loading}>Carregando...</h1>}
-            {data?.map((infringement, index) => (
+            {SearchByPlateContent.length === 0 && <h1 className={style.loading}>Não existe nenhuma infração com essa placa!</h1>}
+            {SearchByPlateContent?.map((infringement, index) => (
                 <div className={style.cardInfringementDiv} key={index}>
                     <div className='driverInformations'>
                         <h1>Placa: {infringement.placa}</h1>

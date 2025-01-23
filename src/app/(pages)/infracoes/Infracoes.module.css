@@ -21,6 +21,7 @@
     outline: none;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: .3s;
+    text-transform: uppercase;
 }
 
 .searchAndFilterSection > .searchForm > input:focus, .searchAndFilterSection > .searchForm > input:hover {
@@ -38,6 +39,10 @@
     transform: translateY(-60%);
 }
 
+.searchAndFilterSection > .searchForm > button.removeFilterButton {
+    right: 50px;
+}
+
 .searchAndFilterSection > .filterDiv {
     display: flex;
     flex-direction: column;
@@ -49,6 +54,10 @@
     padding: 18px;
     border: 2px solid #ccc;
     border-radius: 10px;
+}
+
+.searchAndFilterSection > .filterDiv > .removeFilterButton:hover {
+    transform: scale(1.1);
 }
 
 .infringementSection {

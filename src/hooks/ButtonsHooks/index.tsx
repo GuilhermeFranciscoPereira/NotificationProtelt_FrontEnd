@@ -1,15 +1,15 @@
 import { useModalContext } from "@/contexts/ModalContext";
 import { useRouter } from "next/navigation";
+import EditAndDelete from "@/components/EditAndDelete";
 import SearchByPlate from "@/components/SearchByPlate";
 import Form from "@/components/Form";
-import EditAndDelete from "@/components/EditAndDelete";
 
 export default function ButtonsHooks() {
     const {toggleModal, toSetModalContent} = useModalContext();
     const router = useRouter();
 
     function showAllInfringement() {
-        router.push('infracoes')
+        router.push('infracoes');
     }
 
     function searchByPlate() {
