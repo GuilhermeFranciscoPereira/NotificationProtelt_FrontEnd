@@ -2,10 +2,12 @@ import { useSearchByPlateContext } from '@/contexts/SearchByPlateContext';
 import ButtonsHooks from '@/hooks/ButtonsHooks';
 import Image from 'next/image';
 import style from '../useGetAllInfringiment.tsx/GetAllInfringiment.module.css';
+import GetByIdHooks from '../GetByIdHooks';
 
 export default function GetByPlate() {
     const {SearchByPlateContent} = useSearchByPlateContext();
-    const {showTheFullInfringement, editAndDeleteInfringement} = ButtonsHooks();
+    const {editAndDeleteInfringement} = ButtonsHooks();
+    const {handleSearchByID} = GetByIdHooks();
 
     return (
         <>
@@ -24,7 +26,7 @@ export default function GetByPlate() {
                         alt={`Foto da infração junto da placa ${infringement.placa}`}
                         quality={100}
                     />}
-                    <button onClick={() => showTheFullInfringement(infringement.placa)}>Visualizar infração completa</button>
+                    <button onClick={() => handleSearchByID(infringement.autoDaInfracao)}>Visualizar infração completa</button>
                     <button onClick={() => editAndDeleteInfringement(infringement.placa)}>EDITAR / DELETAR</button>
                 </div>
             ))}

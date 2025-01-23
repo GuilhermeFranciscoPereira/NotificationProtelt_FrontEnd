@@ -16,11 +16,10 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 export default function infracoes() {
-    const {SearchByPlateActive, toSetsearchByPlateActive} = useSearchByPlateContext();
+    const {SearchByPlateActive, toSetsearchByPlateActive, toSetSearchByPlateContent} = useSearchByPlateContext();
       const { register, handleSubmit } = useForm<FormData>({
         resolver: zodResolver(formSchema),
       });
-      const {toSetSearchByPlateContent} = useSearchByPlateContext();
     
       const onSubmit = async (data: FormData) => {
         const form = new FormData();

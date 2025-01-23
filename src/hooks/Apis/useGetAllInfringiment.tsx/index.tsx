@@ -4,6 +4,7 @@ import axios from 'axios';
 import Image from 'next/image';
 import style from './GetAllInfringiment.module.css';
 import ButtonsHooks from '@/hooks/ButtonsHooks';
+import GetByIdHooks from '../GetByIdHooks';
 
 type infringimentsProps = {
     autoDaInfracao: number;
@@ -26,7 +27,8 @@ type infringimentsProps = {
 }
 
 export default function GetAllInfringiment() {
-    const {showTheFullInfringement, editAndDeleteInfringement} = ButtonsHooks();
+    const {editAndDeleteInfringement} = ButtonsHooks();
+    const {handleSearchByID} = GetByIdHooks();
     const { data, isFetching } = useQuery<Array<infringimentsProps>>('infringimentsFetch', async () => {
         const response = await axios.get('http://localhost:7777/allInfringement');
         return response.data;
@@ -49,7 +51,7 @@ export default function GetAllInfringiment() {
                         alt={`Foto da infração junto da placa ${infringement.placa}`}
                         quality={100}
                     />}
-                    <button onClick={() => showTheFullInfringement(infringement.placa)}>Visualizar infração completa</button>
+                    <button onClick={() => handleSearchByID(infringement.autoDaInfracao)}>Visualizar infração completa</button>
                     <button onClick={() => editAndDeleteInfringement(infringement.placa)}>EDITAR / DELETAR</button>
                 </div>
             ))}

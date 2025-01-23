@@ -1,12 +1,17 @@
 'use client'
+import { useSearchByPlateContext } from "@/contexts/SearchByPlateContext";
+import { useSearchByPrimaryKeyContext } from "@/contexts/SearchByPrimaryKey";
 import Image from "next/image";
 import VilaRealLogo from '../../../../assets/imagensForTheSite/VilaRealLogo.jpg';
-import exampleInfringementPhoto from '../../../../assets/imagensForTheSite/exampleInfringementPhoto.jpg'
 import html2canvas from 'html2canvas';
 import style from './InfracaoCompleta.module.css';
 import Link from "next/link";
 
 export default function infracaocompleta() {
+    const {SearchByPrimaryKeyContent} = useSearchByPrimaryKeyContext();
+    const {SearchByPlateContent} = useSearchByPlateContext();
+    const dataChoosed = SearchByPrimaryKeyContent[0];
+
     function captureScreenshot() {
         const content = document.getElementById('sectionToCaptureScreen');
         if (content) {
@@ -44,37 +49,37 @@ export default function infracaocompleta() {
             </div>
             <div className={style.autoDaInfracao}>
                 <span className={style.label}>Auto da Infração</span>
-                <span className={style.value}>112</span>
+                <span className={style.value}>{dataChoosed.autoDaInfracao}</span>
             </div>
             <div className={style.dataEnvio}>
                 <span className={style.label}>Data Envio</span>
-                <span className={style.value}>28/02/2024</span>
+                <span className={style.value}>{dataChoosed.dataEnvio}</span>
             </div>
 
             <h2 className={style.IdentificacaoDoVeiculo}>Identificação do veículo</h2>
             <div className={style.placa}>
                 <span className={style.label}>Placa</span>
-                <span className={style.value}>ITU</span>
+                <span className={style.value}>{dataChoosed.placa}</span>
             </div>
             <div className={style.municipio}>
                 <span className={style.label}>Município</span>
-                <span className={style.value}>ITU</span>
+                <span className={style.value}>{dataChoosed.municipio}</span>
             </div>
             <div className={style.uf}>
                 <span className={style.label}>UF</span>
-                <span className={style.value}>SP</span>
+                <span className={style.value}>{dataChoosed.uf}</span>
             </div>
             <div className={style.marcaModelo}>
                 <span className={style.label}>Marca / Modelo</span>
-                <span className={style.value}>-</span>
+                <span className={style.value}>{dataChoosed.marcaModelo}</span>
             </div>
             <div className={style.cor}>
                 <span className={style.label}>Cor</span>
-                <span className={style.value}>-</span>
+                <span className={style.value}>{dataChoosed.cor}</span>
             </div>
             <div className={style.especieTipo}>
                 <span className={style.label}>Espécie / Tipo</span>
-                <span className={style.value}>-</span>
+                <span className={style.value}>{dataChoosed.especieTipo}</span>
             </div>
             <div className={style.pais}>
                 <span className={style.label}>País</span>
@@ -84,7 +89,7 @@ export default function infracaocompleta() {
             <h2 className={style.IdentificacaoDoLocalDaInfracao}>Identificação do local da infração</h2>
             <div className={style.localDaInfracao}>
                 <span className={style.label}>Local da Infração</span>
-                <span className={style.value}>RUA DOS INHAMBUS</span>
+                <span className={style.value}>{dataChoosed.localDaInfracao}</span>
             </div>
             <div className={style.municipio2}>
                 <span className={style.label}>Município</span>
@@ -102,31 +107,31 @@ export default function infracaocompleta() {
             <h2 className={style.Condutor}>Condutor</h2>
             <div className={style.nome}>
                 <span className={style.label}>Nome</span>
-                <span className={style.value}>-</span>
+                <span className={style.value}>{dataChoosed.nomeCondutor}</span>
             </div>
 
             <h2 className={style.Responsavel}>Responsável</h2>
             <div className={style.proprietario}>
                 <span className={style.label}>Proprietário</span>
-                <span className={style.value}>-</span>
+                <span className={style.value}>{dataChoosed.proprietario}</span>
             </div>
 
             <h2 className={style.Destino}>Destino</h2>
             <div className={style.quadraELote}>
                 <span className={style.label}>Quadra e Lote</span>
-                <span className={style.value}>Q0 L0</span>
+                <span className={style.value}>{dataChoosed.quadraLote}</span>
             </div>
             <div className={style.natureza}>
                 <span className={style.label}>Natureza</span>
-                <span className={style.value}>-</span>
+                <span className={style.value}>{dataChoosed.placa}{dataChoosed.naturezaDoVeiculo}</span>
             </div>
 
-            <Image className={style.exampleInfringementPhoto} src={exampleInfringementPhoto} alt={`Foto da infração junto da placa do veículo`} quality={100}/>
+            <Image className={style.InfringementPhoto} src={`/uploads/${dataChoosed.placa}${dataChoosed.fotoInfracao}`} alt={`Foto da infração junto da placa do veículo`} width={200} height={200} quality={100}/>
 
             <h2 className={style.TipoDaInfracao}>Tipo da infração</h2>
             <div className={style.grauDaInfracao}>
                 <span className={style.label}>Grau da infração</span>
-                <span className={style.value}>1º <span style={{fontSize: "40px", fontWeight: "bolder"}}>NOTIFICAÇÃO</span></span>
+                <span className={style.value}>{SearchByPlateContent.length}º <span style={{fontSize: "40px", fontWeight: "bolder"}}>NOTIFICAÇÃO</span></span>
             </div>
             <div className={style.descricaoDaInfracao}>
                 <span className={style.label}>Descrição da infração:</span>
@@ -154,15 +159,15 @@ export default function infracaocompleta() {
             </div>
             <div className={style.medicaoRealizada}>
                 <span className={style.label}>Medição Realizada:</span>
-                <span className={style.value} style={{textAlign: "end"}}>54 KM/H</span>
+                <span className={style.value} style={{textAlign: "end"}}>{dataChoosed.medicaoRealizadaKMH} KM/H</span>
             </div>
             <div className={style.dataHoraDaInfracao}>
                 <span className={style.label}>Data / Hora da infração:</span>
-                <span className={style.value} style={{textAlign: "end"}}>26/01/2024 - 11:37:02H</span>
+                <span className={style.value} style={{textAlign: "end"}}>{dataChoosed.dataHoraDaInfracao}</span>
             </div>
             <div className={style.valor}>
                 <span className={style.label}>Valor:</span>
-                <span className={style.value} style={{textAlign: "end"}}>0,00</span>
+                <span className={style.value} style={{textAlign: "end"}}>R$ {dataChoosed.valor},00</span>
             </div>
             <div className={style.recurso}>
                 <span className={style.label}>Recurso:</span>

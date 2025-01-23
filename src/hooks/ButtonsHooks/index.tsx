@@ -27,9 +27,5 @@ export default function ButtonsHooks() {
         toSetModalContent(<EditAndDelete>{plate}</EditAndDelete>);
     }
 
-    function showTheFullInfringement(url: string) {
-        router.push(`infracaocompleta/${url}`)
-    }
-
-    return {showAllInfringement, searchByPlate, createNewInfringement, editAndDeleteInfringement, showTheFullInfringement};
+    return {showAllInfringement, searchByPlate, createNewInfringement, editAndDeleteInfringement};
 }
