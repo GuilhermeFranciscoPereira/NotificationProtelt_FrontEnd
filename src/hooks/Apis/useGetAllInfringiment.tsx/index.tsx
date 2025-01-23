@@ -1,13 +1,9 @@
-'use client';
+'use client'
 import { useQuery } from 'react-query';
 import axios from 'axios';
 import Image from 'next/image';
-import style from './GetAllInfringiment.module.css'
+import style from './GetAllInfringiment.module.css';
 import ButtonsHooks from '@/hooks/ButtonsHooks';
-
-type firstReturnProps = {
-    data: Array<infringimentsProps>
-}
 
 type infringimentsProps = {
     autoDaInfracao: number;
@@ -33,12 +29,8 @@ export default function GetAllInfringiment() {
     const {showTheFullInfringement, editAndDeleteInfringement} = ButtonsHooks();
     const { data, isFetching } = useQuery<Array<infringimentsProps>>('infringimentsFetch', async () => {
         const response = await axios.get('http://localhost:7777/allInfringement');
-        console.log(`Com o stringify: ${JSON.stringify(response)}`);
-        console.log(`Data: ${JSON.stringify(response.data)}`);
         return response.data;
     }, { refetchOnWindowFocus: false });
-
-    console.log(data)
 
     return (
         <>
@@ -50,12 +42,13 @@ export default function GetAllInfringiment() {
                         <p>Velocidade: {infringement.medicaoRealizadaKMH} KM/H</p>
                         <p>Quadra e lote: {infringement.quadraLote}</p>
                     </div>
-                    {/* <Image
-                        src={infringement.fotoInfracao}
+                    {<Image
+                        src={`/uploads/${infringement.placa}${infringement.fotoInfracao}`}
+                        height={200}
                         width={200}
                         alt={`Foto da infração junto da placa ${infringement.placa}`}
                         quality={100}
-                    /> */}
+                    />}
                     <button onClick={() => showTheFullInfringement(infringement.placa)}>Visualizar infração completa</button>
                     <button onClick={() => editAndDeleteInfringement(infringement.placa)}>EDITAR / DELETAR</button>
                 </div>

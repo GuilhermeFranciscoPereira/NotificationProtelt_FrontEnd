@@ -34,6 +34,10 @@
     - Next
     - React
         - tanstack/react-query
+        - tanstack/react-query
+        - react-hook-form
+        - react-query
+        - zod
     - Typescript
     - Css Modules
 
@@ -41,6 +45,9 @@
     - Next: 15.1.5
     - React: 19.0.0
         - tanstack/react-query: 5.64.1
+        - react-hook-form: 7.54.2
+        - react-query: 3.39.3
+        - zod: 3.24.1
     - Typescript: 5
 
 ## 🙋🏻‍♂ Como me localizar no projeto?
