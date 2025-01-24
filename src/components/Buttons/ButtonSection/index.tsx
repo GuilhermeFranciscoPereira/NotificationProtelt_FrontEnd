@@ -1,10 +1,10 @@
 'use client';
-import ButtonsHooks from "@/hooks/ButtonsHooks";
+import useButtonsHooks from "@/hooks/Buttons/useButtonsHooks";
 import ButtonStructure from "../ButtonStructure";
 import style from './ButtonSection.module.css';
 
-export default function ButtonSection() {
-    const {showAllInfringement, searchByPlate, createNewInfringement} = ButtonsHooks();
+export default function ButtonSection(): React.ReactNode {
+    const {showAllInfringement, searchByPlate, createNewInfringement} = useButtonsHooks();
     
     return (
         <section className={style.ButtonsOptions}>

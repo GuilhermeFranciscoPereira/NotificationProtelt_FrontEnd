@@ -1,4 +1,3 @@
-'use client'
 import { createContext, useContext, useState } from "react";
 
 type infringimentsProps = {
@@ -15,7 +14,6 @@ type infringimentsProps = {
     proprietario: string;
     quadraLote: string;
     naturezaDoVeiculo: string;
-    grauDaInfracao: string;
     medicaoRealizadaKMH: number;
     fotoInfracao: string;
     dataHoraDaInfracao: string;
@@ -30,7 +28,7 @@ type SearchByPrimaryKeyContextProps = {
 
 const SearchByPrimaryKeyContext = createContext<SearchByPrimaryKeyContextProps>({} as SearchByPrimaryKeyContextProps);
 
-const SearchByPrimaryKeyProvider = ({children}: {children: React.ReactNode}) => {
+const SearchByPrimaryKeyProvider = ({children}: {children: React.ReactNode}): React.ReactNode => {
     const [SearchByPrimaryKeyContent, setSearchByPrimaryKeyContent] = useState<Array<infringimentsProps>>([]);
 
     function toSetSearchByPrimaryKeyContent(content: Array<infringimentsProps>) {

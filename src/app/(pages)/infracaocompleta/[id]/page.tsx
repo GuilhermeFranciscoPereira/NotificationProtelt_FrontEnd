@@ -1,34 +1,16 @@
-'use client'
-import { useSearchByPlateContext } from "@/contexts/SearchByPlateContext";
-import { useSearchByPrimaryKeyContext } from "@/contexts/SearchByPrimaryKey";
-import Image from "next/image";
-import VilaRealLogo from '../../../../assets/imagensForTheSite/VilaRealLogo.jpg';
-import html2canvas from 'html2canvas';
+'use client';
+import useInfracaoCompletaHook from '@/hooks/Pages/useInfracaoCompletaHook';
+import VilaRealLogo from '@/assets/imagensForTheSite/VilaRealLogo.jpg';
 import style from './InfracaoCompleta.module.css';
+import Image from "next/image";
 import Link from "next/link";
 
-export default function infracaocompleta() {
-    const {SearchByPrimaryKeyContent} = useSearchByPrimaryKeyContext();
-    const {SearchByPlateContent} = useSearchByPlateContext();
-    const dataChoosed = SearchByPrimaryKeyContent[0];
-
-    function captureScreenshot() {
-        const content = document.getElementById('sectionToCaptureScreen');
-        if (content) {
-            html2canvas(content).then((canvas) => {
-            const imgData = canvas.toDataURL('image/png');
-
-            const link = document.createElement('a');
-            link.href = imgData;
-            link.download = 'captura_de_tela.png';
-            link.click();
-            });
-        }
-    };
-
+export default function infracaocompleta(): React.ReactNode {
+    const {captureScreenshot, SearchByPrimaryKeyContent, platePosition, dateFormated, dateAndHourFormated} = useInfracaoCompletaHook();
+    
     return (
     <>
-    <button className={style.buttonToCaptureTheScreen} onClick={() => captureScreenshot()}>Clique e tire print</button>
+    <button className={style.buttonToCaptureTheScreen} onClick={() => captureScreenshot('sectionToCaptureScreen')}>Clique e tire print</button>
     <section id="sectionToCaptureScreen">
         <header className={style.header}>
             <Link href={'/infracoes'}>
@@ -49,37 +31,37 @@ export default function infracaocompleta() {
             </div>
             <div className={style.autoDaInfracao}>
                 <span className={style.label}>Auto da Infração</span>
-                <span className={style.value}>{dataChoosed.autoDaInfracao}</span>
+                <span className={style.value}>{SearchByPrimaryKeyContent[0]?.autoDaInfracao}</span>
             </div>
             <div className={style.dataEnvio}>
                 <span className={style.label}>Data Envio</span>
-                <span className={style.value}>{dataChoosed.dataEnvio}</span>
+                <span className={style.value}>{dateFormated}</span>
             </div>
 
             <h2 className={style.IdentificacaoDoVeiculo}>Identificação do veículo</h2>
             <div className={style.placa}>
                 <span className={style.label}>Placa</span>
-                <span className={style.value}>{dataChoosed.placa}</span>
+                <span className={style.value}>{SearchByPrimaryKeyContent[0]?.placa}</span>
             </div>
             <div className={style.municipio}>
                 <span className={style.label}>Município</span>
-                <span className={style.value}>{dataChoosed.municipio}</span>
+                <span className={style.value}>{SearchByPrimaryKeyContent[0]?.municipio}</span>
             </div>
             <div className={style.uf}>
                 <span className={style.label}>UF</span>
-                <span className={style.value}>{dataChoosed.uf}</span>
+                <span className={style.value}>{SearchByPrimaryKeyContent[0]?.uf}</span>
             </div>
             <div className={style.marcaModelo}>
                 <span className={style.label}>Marca / Modelo</span>
-                <span className={style.value}>{dataChoosed.marcaModelo}</span>
+                <span className={style.value}>{SearchByPrimaryKeyContent[0]?.marcaModelo}</span>
             </div>
             <div className={style.cor}>
                 <span className={style.label}>Cor</span>
-                <span className={style.value}>{dataChoosed.cor}</span>
+                <span className={style.value}>{SearchByPrimaryKeyContent[0]?.cor}</span>
             </div>
             <div className={style.especieTipo}>
                 <span className={style.label}>Espécie / Tipo</span>
-                <span className={style.value}>{dataChoosed.especieTipo}</span>
+                <span className={style.value}>{SearchByPrimaryKeyContent[0]?.especieTipo}</span>
             </div>
             <div className={style.pais}>
                 <span className={style.label}>País</span>
@@ -89,7 +71,7 @@ export default function infracaocompleta() {
             <h2 className={style.IdentificacaoDoLocalDaInfracao}>Identificação do local da infração</h2>
             <div className={style.localDaInfracao}>
                 <span className={style.label}>Local da Infração</span>
-                <span className={style.value}>{dataChoosed.localDaInfracao}</span>
+                <span className={style.value}>{SearchByPrimaryKeyContent[0]?.localDaInfracao}</span>
             </div>
             <div className={style.municipio2}>
                 <span className={style.label}>Município</span>
@@ -107,31 +89,31 @@ export default function infracaocompleta() {
             <h2 className={style.Condutor}>Condutor</h2>
             <div className={style.nome}>
                 <span className={style.label}>Nome</span>
-                <span className={style.value}>{dataChoosed.nomeCondutor}</span>
+                <span className={style.value}>{SearchByPrimaryKeyContent[0]?.nomeCondutor}</span>
             </div>
 
             <h2 className={style.Responsavel}>Responsável</h2>
             <div className={style.proprietario}>
                 <span className={style.label}>Proprietário</span>
-                <span className={style.value}>{dataChoosed.proprietario}</span>
+                <span className={style.value}>{SearchByPrimaryKeyContent[0]?.proprietario}</span>
             </div>
 
             <h2 className={style.Destino}>Destino</h2>
             <div className={style.quadraELote}>
                 <span className={style.label}>Quadra e Lote</span>
-                <span className={style.value}>{dataChoosed.quadraLote}</span>
+                <span className={style.value}>{SearchByPrimaryKeyContent[0]?.quadraLote}</span>
             </div>
             <div className={style.natureza}>
                 <span className={style.label}>Natureza</span>
-                <span className={style.value}>{dataChoosed.placa}{dataChoosed.naturezaDoVeiculo}</span>
+                <span className={style.value}>{SearchByPrimaryKeyContent[0]?.naturezaDoVeiculo}</span>
             </div>
 
-            <Image className={style.InfringementPhoto} src={`/uploads/${dataChoosed.placa}${dataChoosed.fotoInfracao}`} alt={`Foto da infração junto da placa do veículo`} width={200} height={200} quality={100}/>
+            <Image className={style.InfringementPhoto} src={`/uploads/${SearchByPrimaryKeyContent[0]?.placa}${SearchByPrimaryKeyContent[0]?.fotoInfracao}`} alt={`Foto da infração junto da placa do veículo`} width={200} height={200} quality={100}/>
 
             <h2 className={style.TipoDaInfracao}>Tipo da infração</h2>
             <div className={style.grauDaInfracao}>
                 <span className={style.label}>Grau da infração</span>
-                <span className={style.value}>{SearchByPlateContent.length}º <span style={{fontSize: "40px", fontWeight: "bolder"}}>NOTIFICAÇÃO</span></span>
+                <span className={style.value}>{platePosition}º <span style={{fontSize: "40px", fontWeight: "bolder"}}>NOTIFICAÇÃO</span></span>
             </div>
             <div className={style.descricaoDaInfracao}>
                 <span className={style.label}>Descrição da infração:</span>
@@ -159,15 +141,15 @@ export default function infracaocompleta() {
             </div>
             <div className={style.medicaoRealizada}>
                 <span className={style.label}>Medição Realizada:</span>
-                <span className={style.value} style={{textAlign: "end"}}>{dataChoosed.medicaoRealizadaKMH} KM/H</span>
+                <span className={style.value} style={{textAlign: "end"}}>{SearchByPrimaryKeyContent[0]?.medicaoRealizadaKMH} KM/H</span>
             </div>
             <div className={style.dataHoraDaInfracao}>
                 <span className={style.label}>Data / Hora da infração:</span>
-                <span className={style.value} style={{textAlign: "end"}}>{dataChoosed.dataHoraDaInfracao}</span>
+                <span className={style.value} style={{textAlign: "end"}}>{dateAndHourFormated}</span>
             </div>
             <div className={style.valor}>
                 <span className={style.label}>Valor:</span>
-                <span className={style.value} style={{textAlign: "end"}}>R$ {dataChoosed.valor},00</span>
+                <span className={style.value} style={{textAlign: "end"}}>R$ {SearchByPrimaryKeyContent[0]?.valor},00</span>
             </div>
             <div className={style.recurso}>
                 <span className={style.label}>Recurso:</span>
@@ -201,7 +183,7 @@ export default function infracaocompleta() {
 
             <h2 className={style.certificadoDeAfericao}>CERTIFICADO DE AFERIÇÃO</h2>
             <div className={style.certificado}>
-                <span className={style.label}>Certificado Nº:</span>
+                <span className={style.label}>Certificado Nº</span>
                 <span className={style.value}>0589-1501</span>
             </div>
             <div className={style.laboratorio}>

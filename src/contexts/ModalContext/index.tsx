@@ -9,7 +9,7 @@ type ModalContextProps = {
 
 const ModalContext = createContext<ModalContextProps>({} as ModalContextProps);
 
-const ModalProvider = ({children}: {children: React.ReactNode}) => {
+const ModalProvider = ({children}: {children: React.ReactNode}): React.ReactNode => {
     const [modalValue, setModalValue] = useState<boolean>(false);
     const [modalContent, setModalContent] = useState<ReactNode>();
 
@@ -28,7 +28,6 @@ const ModalProvider = ({children}: {children: React.ReactNode}) => {
     )
 }
 
-//This function below is to use the UseContext here, and to not need use 'use client' where call this context and to use 'use client' in the AppProvider.tsx;
 function useModalContext() {
     const useModalContext = useContext(ModalContext);
     return useModalContext;

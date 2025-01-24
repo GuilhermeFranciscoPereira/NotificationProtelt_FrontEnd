@@ -1,0 +1,88 @@
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useMutation } from 'react-query';
+import { useForm } from 'react-hook-form';
+import { useState } from 'react';
+import axios from 'axios';
+import * as z from 'zod';
+
+const formSchema = z.object({
+    placa: z.string().regex(/^[A-Za-z]{3}[0-9]{1}[A-Za-z]{1}[0-9]{2}$/, { message: 'Formato de placa inválido, deve ser: ABC1D23' }),
+    dataEnvio: z.string().optional(),
+    municipio: z.string().regex(/^[A-Za-zÀ-ÿ\s]+$/, { message: 'Digite apenas letras para o município' }),
+    uf: z.string().length(2, { message: 'UF deve ter 2 caracteres' }).regex(/^[A-Za-z]{2}$/, { message: 'Digite uma UF válida (duas letras)' }),
+    marcaModelo: z.string(),
+    cor: z.string().regex(/^[A-Za-zÀ-ÿ\s]+$/, { message: 'Digite apenas letras' }),
+    especieTipo: z.string().regex(/^[A-Za-zÀ-ÿ\s]+$/, { message: 'Digite apenas letras' }),
+    localDaInfracao: z.string().regex(/^[A-Za-zÀ-ÿ\s]+$/, { message: 'Digite apenas letras' }),
+    nomeCondutor: z.string().optional(),
+    proprietario: z.string().optional(),
+    quadraLote: z.string().optional(),
+    naturezaDoVeiculo: z.string().optional(),
+    medicaoRealizadaKMH: z.string().or(z.number()),
+    dataHoraDaInfracao: z.string(),
+    valor: z.string().or(z.number()),
+    fotoInfracao: z.instanceof(File).refine((file) => file.size > 0, { message: 'A imagem da infração é obrigatória' }),
+});
+
+type FormDataProps = z.infer<typeof formSchema>;
+
+const api = axios.create({
+    baseURL: 'http://localhost:7777/',
+    headers: {
+        'Content-Type': 'multipart/form-data',
+    },
+});
+
+async function submitForm(formDataWithFile: { formData: FormDataProps, file: File | null }) {
+    const { formData, file } = formDataWithFile;
+    const form = new FormData();
+    Object.keys(formData).forEach((key) => {
+        const value = formData[key as keyof FormDataProps];
+        if (value !== undefined) {
+        form.append(key, value as string | Blob);
+        }
+    });
+
+    if (file) {
+        form.append('fotoInfracao', file);
+    }
+
+    try {
+        const response = await api.post('/allInfringement', form);
+        return response.data;
+    } catch (error) {
+        console.error('Erro ao enviar o formulário:', error);
+        throw new Error('Erro ao enviar o formulário');
+    }
+    }
+
+    export default function useFormHook() {
+    const [file, setFile] = useState<File | null>(null);
+    const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormDataProps>({
+        resolver: zodResolver(formSchema),
+    });
+
+    const mutation = useMutation(submitForm, {
+        onSuccess: (data) => {
+            return data;
+        },
+        onError: (error: any) => {
+            alert(`Erro ao enviar o formulário, por favor, tente novamente! \nErro: ${error.message}`);
+            console.error(`Erro ao enviar o formulário, por favor, tente novamente! \nErro: ${error.message}`);
+        },
+    });
+
+    const onSubmit = (data: FormDataProps) => {
+        mutation.mutate({ formData: data, file });
+    };
+
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const selectedFile = e.target.files?.[0];
+        if (selectedFile) {
+            setFile(selectedFile);
+            setValue('fotoInfracao', selectedFile);
+        }
+    };
+
+    return { handleSubmit, onSubmit, register, errors, handleFileChange };
+}

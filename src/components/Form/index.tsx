@@ -1,70 +1,8 @@
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useState } from 'react';
-import * as z from 'zod';
 import style from './Form.module.css';
+import useFormHook from '@/hooks/useForm';
 
-const formSchema = z.object({
-  placa: z.string().regex(/^[A-Za-z]{3}[0-9]{1}[A-Za-z]{1}[0-9]{2}$/, { message: 'Formato de placa inválido, deve ser: ABC1D23' }),
-  dataEnvio: z.string().optional(),
-  municipio: z.string().regex(/^[A-Za-zÀ-ÿ\s]+$/, { message: 'Digite apenas letras para o município' }),
-  uf: z.string().length(2, { message: 'UF deve ter 2 caracteres' }).regex(/^[A-Za-z]{2}$/, { message: 'Digite uma UF válida (duas letras)' }),
-  marcaModelo: z.string(),
-  cor: z.string().regex(/^[A-Za-zÀ-ÿ\s]+$/, { message: 'Digite apenas letras' }),
-  especieTipo: z.string().regex(/^[A-Za-zÀ-ÿ\s]+$/, { message: 'Digite apenas letras' }),
-  localDaInfracao: z.string().regex(/^[A-Za-zÀ-ÿ\s]+$/, { message: 'Digite apenas letras' }),
-  nomeCondutor: z.string().optional(),
-  proprietario: z.string().optional(),
-  quadraLote: z.string().optional(),
-  naturezaDoVeiculo: z.string().optional(),
-  grauDaInfracao: z.string().regex(/^[A-Za-zÀ-ÿ\s]+$/, { message: 'Digite apenas letras' }),
-  medicaoRealizadaKMH: z.string(),
-  dataHoraDaInfracao: z.string(),
-  valor: z.string(),
-  fotoInfracao: z.instanceof(File).refine((file) => file.size > 0, { message: 'A imagem da infração é obrigatória' }),
-});
-
-type FormData = z.infer<typeof formSchema>;
-
-export default function Form() {
-  const [file, setFile] = useState<File | null>(null);
-  
-
-  const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormData>({
-    resolver: zodResolver(formSchema),
-  });
-
-  const onSubmit = async (data: FormData) => {
-    const form = new FormData();
-    Object.keys(data).forEach((key) => {
-        const value = data[key as keyof FormData];
-        if (value !== undefined) {
-        form.append(key, value as string | Blob);
-        }
-    });
-    if (file) {
-      form.append('fotoInfracao', file);
-    }
-    try {
-      const response = await fetch('http://localhost:7777/allInfringement', {
-        method: 'POST',
-        body: form,
-      });
-      const result = await response.json();
-      console.log(result);
-    } catch (error) {
-      alert(`Erro ao enviar o formulário, por favor, tente novamente! \nErro: ${error}`);
-      console.log(`Erro ao enviar o formulário, por favor, tente novamente! \nErro: ${error}`);
-    }
-  };
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = e.target.files?.[0];
-    if (selectedFile) {
-      setFile(selectedFile);
-      setValue('fotoInfracao', selectedFile);
-    }
-  };
+export default function FormComponent(): React.ReactNode {
+  const {handleSubmit, onSubmit, register, errors, handleFileChange} = useFormHook();
 
   return (
     <form className={style.formContainer} onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
@@ -78,7 +16,7 @@ export default function Form() {
 
       <div className={style.formGroup}>
         <label htmlFor="dataEnvio">Data de Envio ( Não obrigatório )</label>
-        <input id="dataEnvio" type="date" {...register('dataEnvio')} />
+        <input id="dataEnvio" type="date" {...register('dataEnvio')}/>
         {errors.dataEnvio && <span>{errors.dataEnvio.message}</span>}
       </div>
 
@@ -138,19 +76,13 @@ export default function Form() {
 
       <div className={style.formGroup}>
         <label htmlFor="naturezaDoVeiculo">Natureza do veículo ( Não obrigatório )</label>
-        <input id="naturezaDoVeiculo" type="text" placeholder="Natureza do veículo" {...register('naturezaDoVeiculo')} />
+        <input id="naturezaDoVeiculo" type="text" placeholder="Natureza do veículo" {...register('naturezaDoVeiculo')}/>
         {errors.naturezaDoVeiculo && <span>{errors.naturezaDoVeiculo.message}</span>}
       </div>
 
       <div className={style.formGroup}>
-        <label htmlFor="grauDaInfracao">Grau da infração</label>
-        <input id="grauDaInfracao" type="text" placeholder="Grau da infração" {...register('grauDaInfracao')} required/>
-        {errors.grauDaInfracao && <span>{errors.grauDaInfracao.message}</span>}
-      </div>
-
-      <div className={style.formGroup}>
         <label htmlFor="medicaoRealizadaKMH">Medição realizada (Km/h)</label>
-        <input id="medicaoRealizadaKMH" type="text" {...register('medicaoRealizadaKMH')} required/>
+        <input id="medicaoRealizadaKMH" type="number" {...register('medicaoRealizadaKMH')} required/>
         {errors.medicaoRealizadaKMH && <span>{errors.medicaoRealizadaKMH.message}</span>}
       </div>
 
@@ -162,7 +94,7 @@ export default function Form() {
 
       <div className={style.formGroup}>
         <label htmlFor="valor">Valor da multa</label>
-        <input id="valor" type="text" placeholder="Valor" {...register('valor')} required/>
+        <input id="valor" type="number" placeholder="Valor" {...register('valor')} pattern="^\d+(\.\d+)?$" title="Digite um número positivo válido" required/>
         {errors.valor && <span>{errors.valor.message}</span>}
       </div>
 

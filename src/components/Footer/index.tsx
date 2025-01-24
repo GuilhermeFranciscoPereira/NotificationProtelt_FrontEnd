@@ -1,8 +1,8 @@
-import Image from "next/image";
 import logoRumoRadares from '../../assets/imagensForTheSite/RumoLogo.png';
 import style from './Footer.module.css';
+import Image from "next/image";
 
-export default function Footer() {
+export default function Footer(): React.ReactNode {
     return (
         <footer className={style.footerContainer}>
             <div className={style.footerContent}>
@@ -21,7 +21,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className={style.footerBottom}>
-                <p>&copy; 2025 - Sistema criado por: Lottus Sistemas</p>
+                <p>&copy; 2025 - Sistema desenvolvido por: Lottus Sistemas</p>
             </div>
         </footer>
     )

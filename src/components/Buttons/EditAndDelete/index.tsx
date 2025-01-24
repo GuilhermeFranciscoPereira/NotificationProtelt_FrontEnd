@@ -1,6 +1,6 @@
-import style from './EditAndDelete.module.css'
+import style from './EditAndDelete.module.css';
 
-export default function EditAndDelete({ children }: Readonly<{children: React.ReactNode}>) {
+export default function EditAndDelete({ children }: Readonly<{children: React.ReactNode}>): React.ReactNode {
     return (
         <>
         <h2>O que deseja fazer com a placa: {children}</h2>

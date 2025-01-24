@@ -1,11 +1,11 @@
 'use client';
-import Image from "next/image";
+import { useSearchByPlateContext } from "@/contexts/SearchByPlateContext";
 import proteltLogo from '../../assets/imagensForTheSite/ProteltLogo.png';
 import styles from './Header.module.css';
+import Image from "next/image";
 import Link from "next/link";
-import { useSearchByPlateContext } from "@/contexts/SearchByPlateContext";
 
-export default function Header() {
+export default function Header(): React.ReactNode {
     const {toSetsearchByPlateActive} = useSearchByPlateContext();
     return (
         <header className={styles.header}>

@@ -60,25 +60,37 @@
   - layout.tsx: Importa estilos globais, configura metadados (como título e descrição), e encapsula a aplicação.
   - page.tsx: Nossa primeira rota, também chamado como o nosso "home"
   - Pasta (pages) que armazena nossas rotas:
-    - /infracoes ( Armazena todas as infrações )
-    - /infracaocompleta/[id] ( Local onde fica disponível todos os detalhes da infração)
+    - /infracoes ( Armazena todas as infrações de maneira "reduzida" )
+    - /infracaocompleta/[id] ( Local onde fica disponível todos os detalhes da infração que o usuário deseja buscar )
 
 - `./src/assets:` Onde está todas as fotos e arquivos estáticos que vão ser usadas no projeto.
 
 - `./src/components:` Onde está os componentes que serão reutilizados em diversas partes do código. Neste projeto temos os components:
-    - Botões: Buttons
-    - Formulário de novas infrações: Form
-    - Cabeçalho: Header
-    - Modal: Modal
-    - Buscar informações de uma placa: SearchByPlate
+    - Buttons:
+        - ButtonSection: Agrega os três botões da tela inicial
+        - ButtonStructure: "Esqueleto" de cada  botão
+        - EditAndDelete: Botões que são da parte de "Editar / Deletar"
+    - Footer: Rodapé, se localiza na tela inicial do sistema
+    - Form: Formulário para criação de novas infrações, acionado após clicar no botão de "Criar uma nova infração"
+    - Header: Cabeçalho que se encontra no canto superior do sistema e aparece na tela principal e na de mostrar as infrações de forma reduzida
+    - Modal: Esqueleto do modal, criado esse componente para fazer um modal que seja reutilizado de diversas formas
+    - SearchByPlate: Componente que fica responsável pelo campo de input da opção de buscar por uma placa.
 
 - `./src/contexts:` Os contexts são onde separamos os dados que serão compartilhados com toda a aplicação, neste projeto na primeira versão é onde está os contextos de:
-    - Modal
+    - ModalContext
+    - SearchByPlateContext
+    - SearchByPrimaryKeyContext
     - Vale ressaltar que o arquivo 'AppProvider.tsx' é o responsável por agrupar todos os providers dos contextos e exportar como um arquivo único. 
 
 - `./src/hooks:` Está nossos hooks personalizados com as partes lógicas da aplicação. As partes lógicas que temos até o momento são:
-    - ButtonsHooks
-    - ModalHooks
+    - Apis:
+        - useGetByIdHooks
+        - useGetAllInfringimentHooks
+        - useGetByPlateHooks
+    - Pages
+        - useInfracaoCompletaHooks
+        - useInfracaoHooks
+    - useButtonsHooks
 
 - `./src/services:` Pasta que contém as funcionalidades de serviço. Com a primeira versão temos um único arquivo "QueryClient.ts" que serve somente para criarmos um QueryClient e exportar o provider neste próprio arquivo, uma vez que assim podemos usar a diretiva 'use client' no arquivo e não no layout da aplicação.
 

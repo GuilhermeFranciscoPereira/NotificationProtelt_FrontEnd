@@ -45,6 +45,14 @@
     border: 1px solid black;
 }
 
+.main > div > .label {
+    font-weight: bold;
+}
+
+.main > div > .value {
+    text-transform: uppercase;
+}
+
 .label, .value {
     display: block;
 }

@@ -1,9 +1,9 @@
 import ButtonSection from "@/components/Buttons/ButtonSection";
+import ModalComponent from "@/components/Modal";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import ModalComponent from "@/components/Modal";
 
-export default function Home() {
+export default function Home(): React.ReactNode {
   return (
     <>
     <Header></Header>

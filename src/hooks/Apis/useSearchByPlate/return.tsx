@@ -1,13 +1,13 @@
 import { useSearchByPlateContext } from '@/contexts/SearchByPlateContext';
-import ButtonsHooks from '@/hooks/ButtonsHooks';
+import useButtonsHooks from '@/hooks/Buttons/useButtonsHooks';
+import useGetById from '../useGetById';
 import Image from 'next/image';
-import style from '../useGetAllInfringiment.tsx/GetAllInfringiment.module.css';
-import GetByIdHooks from '../GetByIdHooks';
+import style from '../useGetAllInfringiment/GetAllInfringiment.module.css';
 
-export default function GetByPlate() {
+export default function SearchByPlateReturn(): React.ReactNode {
     const {SearchByPlateContent} = useSearchByPlateContext();
-    const {editAndDeleteInfringement} = ButtonsHooks();
-    const {handleSearchByID} = GetByIdHooks();
+    const {editAndDeleteInfringement} = useButtonsHooks();
+    const {handleSearchByID} = useGetById();
 
     return (
         <>
@@ -15,9 +15,9 @@ export default function GetByPlate() {
             {SearchByPlateContent?.map((infringement, index) => (
                 <div className={style.cardInfringementDiv} key={index}>
                     <div className='driverInformations'>
-                        <h1>Placa: {infringement.placa}</h1>
-                        <p>Velocidade: {infringement.medicaoRealizadaKMH} KM/H</p>
-                        <p>Quadra e lote: {infringement.quadraLote}</p>
+                        <h1>Placa: <span style={{textTransform: "uppercase"}}>{infringement.placa}</span></h1>
+                        <p>Velocidade: <span style={{textTransform: "uppercase"}}>{infringement.medicaoRealizadaKMH} KM/H </span></p>
+                        <p>Quadra e lote: <span style={{textTransform: "uppercase"}}>{infringement.quadraLote}</span></p>
                     </div>
                     {<Image
                         src={`/uploads/${infringement.placa}${infringement.fotoInfracao}`}

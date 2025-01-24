@@ -1,10 +1,10 @@
 import { useModalContext } from "@/contexts/ModalContext";
 import { useRouter } from "next/navigation";
-import EditAndDelete from "@/components/EditAndDelete";
-import SearchByPlate from "@/components/SearchByPlate";
-import Form from "@/components/Form";
+import EditAndDelete from "@/components/Buttons/EditAndDelete";
+import SearchByPlateComponent from "@/components/SearchByPlate";
+import FormComponent from "@/components/Form";
 
-export default function ButtonsHooks() {
+export default function useButtonsHooks() {
     const {toggleModal, toSetModalContent} = useModalContext();
     const router = useRouter();
 
@@ -14,12 +14,12 @@ export default function ButtonsHooks() {
 
     function searchByPlate() {
         toggleModal();
-        toSetModalContent(<SearchByPlate></SearchByPlate>);
+        toSetModalContent(<SearchByPlateComponent></SearchByPlateComponent>);
     }
     
     function createNewInfringement() {
         toggleModal();
-        toSetModalContent(<Form></Form>);
+        toSetModalContent(<FormComponent></FormComponent>);
     }
 
     function editAndDeleteInfringement(plate: string) {

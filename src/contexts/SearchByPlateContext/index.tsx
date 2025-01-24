@@ -1,4 +1,3 @@
-'use client'
 import { createContext, useContext, useState } from "react";
 
 type infringimentsProps = {
@@ -14,7 +13,6 @@ type infringimentsProps = {
     proprietario: string;
     quadraLote: string;
     naturezaDoVeiculo: string;
-    grauDaInfracao: string;
     medicaoRealizadaKMH: number;
     fotoInfracao: string;
     dataHoraDaInfracao: string;
@@ -31,7 +29,7 @@ type SearchByPlateContextProps = {
 
 const SearchByPlateContext = createContext<SearchByPlateContextProps>({} as SearchByPlateContextProps);
 
-const SearchByPlateProvider = ({children}: {children: React.ReactNode}) => {
+const SearchByPlateProvider = ({children}: {children: React.ReactNode}): React.ReactNode => {
     const [SearchByPlateActive, setSearchByPlateActive] = useState<boolean>(false);
     const [SearchByPlateContent, setSearchByPlateContent] = useState<Array<infringimentsProps>>([]);
 
@@ -51,7 +49,6 @@ const SearchByPlateProvider = ({children}: {children: React.ReactNode}) => {
     )
 }
 
-//This function below is to use the UseContext here, and to not need use 'use client' where call this context and to use 'use client' in the AppProvider.tsx;
 function useSearchByPlateContext() {
     const useSearchByPlateContext = useContext(SearchByPlateContext);
     return useSearchByPlateContext;
