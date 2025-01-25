@@ -134,8 +134,9 @@
 
 - 🚨 Não esqueça que para não ocorrer erros no código ao clonar ele, você deve fazer o comando abaixo 🚨
     ```bash
-    npm i   
+    npm i --force
     ```
+    - O force é devido a utilização de bibliotecas com versões que não possuem suporte a versão atual do react utilizado.
     
 - Ao ter o projeto na sua máquina você deve abrir a api e também o site. Para isso siga os passos abaixo:
   - Abra o terminal e escreva o código abaixo para iniciar a api:
