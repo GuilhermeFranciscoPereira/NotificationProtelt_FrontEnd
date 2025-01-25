@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
 import * as z from 'zod';
 import axios from 'axios';
+import Toast from "@/components/Toast/index";
 
 const formSchema = z.object({
   placa: z.string().regex(/^[A-Za-z]{3}[0-9]{1}[A-Za-z]{1}[0-9]{2}$/, { message: 'Formato de placa inválido, deve ser: ABC1D23' }),
@@ -31,8 +32,7 @@ async function submitForm(formDatas: formDatasProps) {
         const response = await api.post(`allInfringement/${formDatas.placa}`, form);
         return response.data;
     } catch (error) {
-        alert(`Não foi possível buscar o veículo com essa placa!`);
-        console.log(`Não foi possível buscar o veículo com essa placa!`);
+        console.log(`Erro: ${error}`)
     }
 }
 
@@ -46,11 +46,12 @@ export default function useSearchByPlate() {
     const mutation = useMutation(submitForm, {
         onSuccess: (data) => {
             toSetSearchByPlateContent(data);
+            <Toast message={`Placa encontrada com sucesso!`} backgroundColor='lightgreen' duration={3000}></Toast>
             router.push('/infracoes');
         },
         onError: (error: any) => {
-            alert(`Erro ao enviar o formulário, por favor, tente novamente! \nErro: ${error.message}`);
-            console.error(`Erro ao enviar o formulário, por favor, tente novamente! \nErro: ${error.message}`);
+            <Toast message={`Não foi possível encontrar a placa.`} backgroundColor='rgba(255, 0, 0, 0.5)'></Toast>
+            console.log(`Não foi possível buscar o veículo com essa placa!`);
         },
     });
 

@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import axios from 'axios';
 import * as z from 'zod';
+import Toast from "@/components/Toast/index";
 
 const formSchema = z.object({
     placa: z.string().regex(/^[A-Za-z]{3}[0-9]{1}[A-Za-z]{1}[0-9]{2}$/, { message: 'Formato de placa inválido, deve ser: ABC1D23' }),
@@ -64,11 +65,11 @@ async function submitForm(formDataWithFile: { formData: FormDataProps, file: Fil
 
     const mutation = useMutation(submitForm, {
         onSuccess: (data) => {
+            <Toast message={`Infração cadastrada com sucesso!`} backgroundColor='lightgreen' duration={3000}></Toast>
             return data;
         },
         onError: (error: any) => {
-            alert(`Erro ao enviar o formulário, por favor, tente novamente! \nErro: ${error.message}`);
-            console.error(`Erro ao enviar o formulário, por favor, tente novamente! \nErro: ${error.message}`);
+            <Toast message={`Não foi possível cadastrar a nova informação. \nErro`} backgroundColor='rgba(255, 0, 0, 0.5)'></Toast>
         },
     });
 

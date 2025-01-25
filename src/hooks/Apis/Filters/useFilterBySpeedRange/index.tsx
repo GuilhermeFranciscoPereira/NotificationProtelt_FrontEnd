@@ -7,6 +7,7 @@ import axios from 'axios';
 import * as z from 'zod';
 import { useModalContext } from '@/contexts/ModalContext';
 import SearchBySpeedRange from '@/components/Filters/SearchBySpeedRange';
+import Toast from "@/components/Toast/index";
 
 const speedFilterSchema = z.object({
   minSpeed: z.number().nonnegative({ message: 'Velocidade mínima deve ser um número positivo' }),
@@ -38,11 +39,10 @@ export default function useFilterBySpeedRange() {
 
   const mutation = useMutation(filterBySpeed, {
     onSuccess: (data) => {
-      console.log('Infrações filtradas com sucesso:', data);
-      alert('Filtragem realizada com sucesso! Verifique o console para os resultados.');
+      <Toast message={`Infrações filtradas com sucesso!`} backgroundColor='lightgreen' duration={3000}></Toast>
     },
     onError: (error: any) => {
-      alert(`Erro ao realizar o filtro. Tente novamente.\nErro: ${error.message}`);
+      <Toast message={`Não foi possível filtrar as informações. \nErro: ${error.message}`} backgroundColor='rgba(255, 0, 0, 0.5)'></Toast>
     },
   });
 

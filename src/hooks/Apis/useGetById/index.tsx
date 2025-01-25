@@ -2,6 +2,7 @@ import { useSearchByPrimaryKeyContext } from '@/contexts/SearchByPrimaryKey';
 import { useRouter } from 'next/navigation';
 import { useMutation } from 'react-query';
 import axios from 'axios';
+import Toast from "@/components/Toast/index";
 
 const api = axios.create({
   baseURL: 'http://localhost:7777/',
@@ -26,8 +27,7 @@ export default function useGetById() {
       router.push(`/infracaocompleta/${data.id}`);
     },
     onError: (error: any) => {
-      alert(`Erro ao tentar acessar a infração completa, por favor, tente novamente! \nErro: ${error.message}`);
-      console.error(`Erro ao tentar acessar a infração completa, por favor, tente novamente! \nErro: ${error.message}`);
+      <Toast message={`Não foi possível acessar a infração completa. \nErro: ${error.message}`} backgroundColor='rgba(255, 0, 0, 0.5)'></Toast>
     },
   });
 

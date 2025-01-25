@@ -1,5 +1,6 @@
 import { useMutation } from 'react-query';
 import axios from 'axios';
+import Toast from "@/components/Toast/index";
 
 const api = axios.create({
   baseURL: 'http://localhost:7777/',
@@ -13,10 +14,9 @@ export default function useDeleteInfringement() {
   async function deleteInfringement(autoDaInfracao: number) {
     try {
       await deleteMutation.mutateAsync(autoDaInfracao);
-      alert('Infração deletada com sucesso!');
+      <Toast message={`Infração deletada com sucesso!`} backgroundColor='lightgreen' duration={3000}></Toast>
     } catch (error) {
-      console.error('Erro ao deletar infração:', error);
-      alert('Erro ao deletar infração. Tente novamente.');
+      <Toast message={`Não foi possível deletar informação. \nErro`} backgroundColor='rgba(255, 0, 0, 0.5)'></Toast>
     }
   };
 
