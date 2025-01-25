@@ -5,9 +5,11 @@ import useInfracoesHook from '@/hooks/Pages/useInfracoesHook';
 import ModalComponent from '@/components/Modal';
 import style from './Infracoes.module.css';
 import Header from '@/components/Header';
+import useFilterBySpeedRange from '@/hooks/Apis/Filters/useFilterBySpeedRange';
 
 export default function infracoes(): React.ReactNode {
   const {handleSubmit, onSubmit, register, SearchByPlateActive, toSetsearchByPlateActive} = useInfracoesHook();
+  const {activeModalToFilter} = useFilterBySpeedRange();
   return (
     <>
     <Header></Header>
@@ -19,13 +21,7 @@ export default function infracoes(): React.ReactNode {
           {SearchByPlateActive && <button type='button' className={style.removeFilterButton} onClick={() => {toSetsearchByPlateActive(false)}}>❌</button>}
       </form>
       <div className={style.filterDiv}>
-        <select id="speedFilter" name="speedFilter">
-          <option value="withoutFilter">Sem filtro</option>
-          <option value="40-60">40 - 60 km/h</option>
-          <option value="60-80">60 - 80 km/h</option>
-          <option value="80-100">80 - 100 km/h</option>
-          <option value="100-120">100 - 120 km/h</option>
-        </select>
+        <button onClick={() => {activeModalToFilter()}}>Filtrar por velocidade</button>
       </div>
     </section>
     <section className={style.infringementSection}>

@@ -27,7 +27,7 @@ export default function SearchByPlateReturn(): React.ReactNode {
                         quality={100}
                     />}
                     <button onClick={() => handleSearchByID(infringement.autoDaInfracao)}>Visualizar infração completa</button>
-                    <button onClick={() => editAndDeleteInfringement(infringement.placa)}>EDITAR / DELETAR</button>
+                    <button onClick={() => editAndDeleteInfringement(infringement.autoDaInfracao, infringement.placa)}>EDITAR / DELETAR</button>
                 </div>
             ))}
         </>

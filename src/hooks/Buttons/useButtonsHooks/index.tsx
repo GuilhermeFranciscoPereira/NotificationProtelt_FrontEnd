@@ -1,7 +1,7 @@
 import { useModalContext } from "@/contexts/ModalContext";
 import { useRouter } from "next/navigation";
 import EditAndDelete from "@/components/Buttons/EditAndDelete";
-import SearchByPlateComponent from "@/components/SearchByPlate";
+import SearchByPlateComponent from "@/components/Filters/SearchByPlate";
 import FormComponent from "@/components/Form";
 
 export default function useButtonsHooks() {
