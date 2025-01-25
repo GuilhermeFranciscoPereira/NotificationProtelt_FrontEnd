@@ -22,9 +22,9 @@ export default function useButtonsHooks() {
         toSetModalContent(<FormComponent></FormComponent>);
     }
 
-    function editAndDeleteInfringement(plate: string) {
+    function editAndDeleteInfringement(autoDaInfracao: number, plate: string) {
         toggleModal();
-        toSetModalContent(<EditAndDelete>{plate}</EditAndDelete>);
+        toSetModalContent(<EditAndDelete autoDaInfracao={autoDaInfracao} plate={plate}></EditAndDelete>);
     }
 
     return {showAllInfringement, searchByPlate, createNewInfringement, editAndDeleteInfringement};
