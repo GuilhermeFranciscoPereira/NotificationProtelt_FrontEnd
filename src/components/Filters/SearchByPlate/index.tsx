@@ -1,5 +1,5 @@
-import style from './SearchByPlate.module.css';
 import useSearchByPlate from '@/hooks/Apis/useSearchByPlate';
+import style from './SearchByPlate.module.css';
 
 export default function SearchByPlateComponent() {
   const {handleSubmit, onSubmit, register} = useSearchByPlate();

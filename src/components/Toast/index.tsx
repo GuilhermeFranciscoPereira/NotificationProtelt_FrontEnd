@@ -1,7 +1,7 @@
-'use client'
+'use client';
 import React from 'react';
 import styles from './Toast.module.css';
-import { useToast } from '@/hooks/Toast/index';
+import { useToast } from '@/hooks/useToast/index';
 
 interface ToastProps {
   message: string;

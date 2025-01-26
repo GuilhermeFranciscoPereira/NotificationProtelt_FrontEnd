@@ -15,12 +15,17 @@
 
 .sectionSearchByPlate > input {
     width: 100%;
-    padding: 10px;
-    border-radius: 10px;
-    border: 2px solid #ccc;
     font-size: 18px;
+    padding: 10px;
     margin-bottom: 10px;
+    border: 2px solid var(--Blue-secondary-color);
+    border-radius: 10px;
     text-transform: uppercase;
+}
+
+.sectionSearchByPlate > input:focus {
+    border: 2px solid var(--Blue-primary-color);
+    outline: none;
 }
 
 .sectionSearchByPlate > .submitBtn {
@@ -34,6 +39,6 @@
 }
 
 .sectionSearchByPlate > .submitBtn:hover {
-    background-color: green;
-    transition: .3s;
+    background-color: var(--Green-secondary-color);
+    transition: .3s ease all;
 }

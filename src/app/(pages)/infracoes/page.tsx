@@ -1,11 +1,11 @@
 'use client';
+import useFilterBySpeedRange from '@/hooks/Apis/Filters/useFilterBySpeedRange';
 import GetAllInfringiment from '@/hooks/Apis/useGetAllInfringiment/return';
 import SearchByPlateReturn from '@/hooks/Apis/useSearchByPlate/return';
 import useInfracoesHook from '@/hooks/Pages/useInfracoesHook';
 import ModalComponent from '@/components/Modal';
 import style from './Infracoes.module.css';
 import Header from '@/components/Header';
-import useFilterBySpeedRange from '@/hooks/Apis/Filters/useFilterBySpeedRange';
 
 export default function infracoes(): React.ReactNode {
   const {handleSubmit, onSubmit, register, SearchByPlateActive, toSetsearchByPlateActive} = useInfracoesHook();

@@ -1,3 +1,13 @@
+@keyframes typing {
+    from { width: 0 };
+    to { width: 100% };
+}
+
+@keyframes blink-caret {
+    50% { border-right-color: transparent };
+    100% { border-right-color: grey };
+  }
+
 .header > .informations {
     display: flex;
     align-items: center;
@@ -6,16 +16,22 @@
 }
 
 .header > .informations > h1 {
+    width: 0;
+    max-width: fit-content;
     font-size: 20px;
-    width: 40%;
     letter-spacing: 1px;
     text-align: center;
+    white-space: nowrap;
+    color: var(--Blue-primary-color);
+    border-right: 1px solid grey;
+    overflow-x: hidden;
+    animation: typing 8s steps(500) 1s infinite, blink-caret 0.7s step-end infinite;
 }
 
 .header > hr {
     margin: 10px;
     border: none;
-    border-bottom: 3px var(--primary-color) solid;
+    border-bottom: 3px var(--Blue-secondary-color) solid;
 }
 
 @media (min-width: 481px) and (max-width: 768px) {

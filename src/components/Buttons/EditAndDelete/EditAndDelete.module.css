@@ -1,37 +1,39 @@
+.h2 {
+    margin-top: 10px;
+}
+
 .buttonsEditAndDeleteDiv {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-top: 20px;
 }
 
 .buttonsEditAndDeleteDiv > button {
-    cursor: pointer;
     width: 100%;
     padding: 12px;
     font-size: 18px;
-    border-radius: 10px;
-    border: none;
-    color: black;
-    transition: .3s;
     margin: 5px 0px;
+    border: 1px solid var(--Blue-primary-color);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .3s ease all;
 }
 
 .buttonsEditAndDeleteDiv > .editButton {
-    background-color: lightgreen;
+    background-color: var(--Green-primary-color);
 }
 
 .buttonsEditAndDeleteDiv > .editButton:hover {
     color: white;
-    background-color: green;
+    background-color: var(--Green-secondary-color);
 }
 
 .buttonsEditAndDeleteDiv > .deleteButton {
-    background-color: rgba(255, 0, 0, 0.5);
+    background-color: #ff000080;
 }
 
 .buttonsEditAndDeleteDiv > .deleteButton:hover {
     color: white;
-    background-color: red;
+    background-color: var(--Red-primary-color);
 }

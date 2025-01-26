@@ -15,17 +15,17 @@
 .searchAndFilterSection > .searchForm > input {
     width: 100%;
     font-size: 18px;
-    padding: 18px;
-    border: 2px solid #ccc;
-    border-radius: 50px;
-    outline: none;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: .3s;
     text-transform: uppercase;
+    padding: 18px;
+    outline: none;
+    border: 2px solid var(--Blue-secondary-color);
+    border-radius: 50px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: .3s ease all;
 }
 
 .searchAndFilterSection > .searchForm > input:focus, .searchAndFilterSection > .searchForm > input:hover {
-    border: 2px solid grey;
+    border: 2px solid var(--Blue-primary-color);
 }
 
 .searchAndFilterSection > .searchForm > button {
@@ -44,18 +44,17 @@
 }
 
 .searchAndFilterSection > .filterDiv > button {
-    background-color: var(--primary-color);
+    background-color: var(--Blue-secondary-color);
     width: 100%;
-    border: none;
     padding: 18px;
+    border: 2px solid var(--Blue-secondary-color);
     border-radius: 50px;
     cursor: pointer;
-    transition: .2s;
+    transition: .3s ease all;
 }
 
 .searchAndFilterSection > .filterDiv > button:hover {
-    background-color: lightgreen;
-    transform: scale(1.1);
+    border: 2px solid var(--Blue-primary-color);
 }
 
 .infringementSection {

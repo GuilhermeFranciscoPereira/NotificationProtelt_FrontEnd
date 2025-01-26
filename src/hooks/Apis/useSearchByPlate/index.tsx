@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
 import * as z from 'zod';
 import axios from 'axios';
-import Toast from "@/components/Toast/index";
+import Toast from '@/components/Toast';
 
 const formSchema = z.object({
   placa: z.string().regex(/^[A-Za-z]{3}[0-9]{1}[A-Za-z]{1}[0-9]{2}$/, { message: 'Formato de placa inválido, deve ser: ABC1D23' }),

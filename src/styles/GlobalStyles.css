@@ -1,5 +1,9 @@
 :root {
-    --primary-color: rgba(189,214,236,255);
+    --Red-primary-color: #d83734;
+    --Blue-primary-color: #013050;
+    --Blue-secondary-color: #bdd6ec;
+    --Green-primary-color: #90ee90;
+    --Green-secondary-color: #008000;
 }
 
 * { 

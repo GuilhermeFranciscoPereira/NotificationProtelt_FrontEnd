@@ -4,11 +4,11 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-    background: linear-gradient(to top, black, white);
     padding-top: 20px;
     color: #fff;
+    background: linear-gradient(to top, var(--Blue-primary-color), white);
 }
-  
+
 .footerContainer > .footerContent {
     width: 100%;
     display: flex;
@@ -21,20 +21,22 @@
 
 .footerContact > h3 {
     font-size: 23px;
+    text-shadow: 2px 2px 11px black;
 }
 
 .footerContact > ul {
-    list-style-type: none;
     font-size: 14px;
+    list-style-type: none;
 }
 
 .footerContact > ul > li {
     margin-bottom: 5px;
+    text-shadow: 2px 2px 15px black;
 }
 
 .footerContact > ul > li > a {
-    text-decoration: none;
     color: #fff;
+    text-decoration: none;
 }
 
 .footerBottom {

@@ -11,7 +11,7 @@ export default function GetAllInfringiment(): React.ReactNode {
     
     return (
         <>
-            {isFetching && <h1 className={style.loading}>Carregando...</h1>}
+            {isFetching && <h1 className={style.loading}>Buscando infrações...</h1>}
             {data?.map((infringement, index) => (
                 <div className={style.cardInfringementDiv} key={index}>
                     <div className='driverInformations'>

@@ -1,6 +1,6 @@
 import { useMutation } from 'react-query';
 import axios from 'axios';
-import Toast from "@/components/Toast/index";
+import Toast from '@/components/Toast';
 
 const api = axios.create({
   baseURL: 'http://localhost:7777/',

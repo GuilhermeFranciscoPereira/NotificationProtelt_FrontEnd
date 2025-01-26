@@ -7,11 +7,11 @@ import axios from 'axios';
 import * as z from 'zod';
 import { useModalContext } from '@/contexts/ModalContext';
 import SearchBySpeedRange from '@/components/Filters/SearchBySpeedRange';
-import Toast from "@/components/Toast/index";
+import Toast from '@/components/Toast';
 
 const speedFilterSchema = z.object({
-  minSpeed: z.number().nonnegative({ message: 'Velocidade mínima deve ser um número positivo' }),
-  maxSpeed: z.number().nonnegative({ message: 'Velocidade máxima deve ser um número positivo' }),
+  minSpeed: z.string().or(z.number()),
+  maxSpeed: z.string().or(z.number()),
 });
 
 type SpeedFilterFormData = z.infer<typeof speedFilterSchema>;
@@ -20,7 +20,7 @@ const api = axios.create({
     baseURL: 'http://localhost:7777/',
 });
 
-async function filterBySpeed(payload: {minSpeed: number; maxSpeed: number; plate?: string}) {
+async function filterBySpeed(payload: {minSpeed: number | string; maxSpeed: number | string; plate?: string}) {
     try {
         const response = await api.post('/allInfringement/SPEEDFILTER', payload);
         return response.data;

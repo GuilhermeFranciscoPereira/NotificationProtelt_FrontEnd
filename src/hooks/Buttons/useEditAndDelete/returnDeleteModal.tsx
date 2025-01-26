@@ -10,7 +10,7 @@ export default function ReturnDeleteModal({autoDaInfracao}: ReturnDeleteModalPro
     const {deleteInfringement} = useDeleteInfringement();
     return (
         <>
-        <h2>Você tem certeza que deseja excluir essa infração?</h2>
+        <h2 className={style.h2}>Você tem certeza que deseja excluir essa infração?</h2>
         <div className={style.buttonsEditAndDeleteDiv}>
             <button className={style.deleteButton} onClick={() => {deleteInfringement(autoDaInfracao)}}>Sim, deletar infração</button>
         </div>

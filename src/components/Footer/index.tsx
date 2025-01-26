@@ -21,7 +21,7 @@ export default function Footer(): React.ReactNode {
                 </div>
             </div>
             <div className={style.footerBottom}>
-                <p>&copy; 2025 - Sistema desenvolvido por: Lottus Sistemas</p>
+                <p>&copy; Sistema desenvolvido por: Lottus Sistemas</p>
             </div>
         </footer>
     )

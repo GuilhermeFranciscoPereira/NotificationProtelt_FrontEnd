@@ -4,14 +4,13 @@
     max-width: 450px;
 }
 
-
 .formContainer > h2 {
     text-align: center;
     font-size: 20px;
     margin: 20px 0px;
     letter-spacing: 2px;
     padding-bottom: 10px;
-    border-bottom: 5px solid var(--primary-color);
+    border-bottom: 5px solid var(--Blue-secondary-color);
 }
 
 .formContainer > .formGroup {
@@ -29,31 +28,31 @@
 .formContainer > .formGroup > input {
     width: 100%;
     padding: 10px;
-    border-radius: 10px;
-    border: 2px solid #ccc;
     font-size: 18px;
-    text-transform: uppercase;
     margin-bottom: 10px;
+    text-transform: uppercase;
+    border: 2px solid #ccc;
+    border-radius: 10px;
 }
 
 .formContainer > .formGroup > input:focus {
     outline: none;
-    border: 2px solid rgba(0, 0, 0, 0.8);
+    border: 2px solid var(--Blue-primary-color);
 }
 
 .formContainer > .submitBtn {
-    cursor: pointer;
-    padding: 12px;
     font-size: 18px;
-    border-radius: 10px;
-    border: none;
+    padding: 12px;
     color: white;
+    border: none;
+    border-radius: 10px;
     background-color: rgba(0, 128, 0, 0.8);
+    cursor: pointer;
+    transition: .3s ease all;
 }
 
 .formContainer > .submitBtn:hover {
-    background-color: green;
-    transition: .3s;
+    background-color: var(--Green-secondary-color);
 }
 
 @media (max-width: 480px) {

@@ -3,42 +3,43 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 10px;
     margin: 20px 0px 10px 0px;
+    gap: 10px;
 }
 
 .header > h1 {
+    text-align: center;
     font-size: 20px;
     width: 30%;
-    text-align: center;
 }
 
 .buttonToCaptureTheScreen {
     position: fixed;
     top: 20px;
     right: 20px;
-    background-color: #007bff;
     color: white;
-    border: none;
     padding: 15px 30px;
     font-size: 16px;
     font-weight: bold;
+    cursor: pointer;
+    border: none;
     border-radius: 10px;
     box-shadow: 2px 2px 5px black;
-    cursor: pointer;
-    transition: .2s;
+    background-color: var(--Blue-secondary-color);
+    transition: .3s ease all;
 }
   
 .buttonToCaptureTheScreen:hover {
-    background-color: #0056b3;
+    color: white;
+    background-color: var(--Blue-primary-color);
     transform: scale(1.1);
 }
 
 .main > h2 {
-    background-color: var(--primary-color);
     text-align: center;
     font-weight: 500;
     border: 1px solid black;
+    background-color: var(--Blue-secondary-color);
 }
 
 .main > div {
@@ -59,10 +60,10 @@
 
 /* This is a grid template area, I used 7 columns so there are 7 items in each quote */
 .main {
-    width: 95vw;
-    margin: 0px auto 10px auto;
-    font-size: 20px;
     display: grid;
+    width: 95vw;
+    font-size: 20px;
+    margin: 0px auto 10px auto;
     grid-template-areas: 
     'IndicacaoDaAutuacao IndicacaoDaAutuacao IndicacaoDaAutuacao IndicacaoDaAutuacao IndicacaoDaAutuacao IndicacaoDaAutuacao IndicacaoDaAutuacao'
     'orgaoautuador orgaoautuador orgaoautuador orgaoautuador codigoDoOrgao autoDaInfracao dataEnvio'
