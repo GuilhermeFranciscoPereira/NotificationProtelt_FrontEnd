@@ -1,10 +1,11 @@
+import { useModalContext } from '@/contexts/ModalContext';
+import { useToastContext } from '@/contexts/ToastContext';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from 'react-query';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import axios from 'axios';
 import * as z from 'zod';
-import Toast from "@/components/Toast/index";
 
 const formSchema = z.object({
     placa: z.string().regex(/^[A-Za-z]{3}[0-9]{1}[A-Za-z]{1}[0-9]{2}$/, { message: 'Formato de placa inválido, deve ser: ABC1D23' }),
@@ -15,10 +16,10 @@ const formSchema = z.object({
     cor: z.string().regex(/^[A-Za-zÀ-ÿ\s]+$/, { message: 'Digite apenas letras' }),
     especieTipo: z.string().regex(/^[A-Za-zÀ-ÿ\s]+$/, { message: 'Digite apenas letras' }),
     localDaInfracao: z.string().regex(/^[A-Za-zÀ-ÿ\s]+$/, { message: 'Digite apenas letras' }),
-    nomeCondutor: z.string().optional(),
-    proprietario: z.string().optional(),
-    quadraLote: z.string().optional(),
-    naturezaDoVeiculo: z.string().optional(),
+    nomeCondutor: z.string().refine(value => value === "" || /^[A-Za-zÀ-ÿ\s]+$/.test(value), {message: 'Digite apenas letras',}).optional(),
+    proprietario: z.string().refine(value => value === "" || /^[A-Za-zÀ-ÿ\s]+$/.test(value), {message: 'Digite apenas letras',}).optional(),      
+    quadraLote: z.string().refine(value => value === "" || /^[Qq]\d [Ll]\d$/.test(value), {message: 'Formato de quadra e lote inválido, deve ser: Q1 L1 (Letra Q, um número, espaço, Letra L e outro número)',}).optional(),
+    naturezaDoVeiculo: z.string().refine(value => value === "" || /^[A-Za-zÀ-ÿ\s]+$/.test(value), {message: 'Digite apenas letras',}).optional(),
     medicaoRealizadaKMH: z.string().or(z.number()),
     dataHoraDaInfracao: z.string(),
     valor: z.string().or(z.number()),
@@ -40,36 +41,33 @@ async function submitForm(formDataWithFile: { formData: FormDataProps, file: Fil
     Object.keys(formData).forEach((key) => {
         const value = formData[key as keyof FormDataProps];
         if (value !== undefined) {
-        form.append(key, value as string | Blob);
+            form.append(key, value as string | Blob);
         }
     });
 
     if (file) {
         form.append('fotoInfracao', file);
     }
+    const response = await api.post('/allInfringement', form);
+    return response.data;
+}
 
-    try {
-        const response = await api.post('/allInfringement', form);
-        return response.data;
-    } catch (error) {
-        console.error('Erro ao enviar o formulário:', error);
-        throw new Error('Erro ao enviar o formulário');
-    }
-    }
-
-    export default function useFormHook() {
+export default function usePostForm() {
     const [file, setFile] = useState<File | null>(null);
+    const {showToast} = useToastContext();
+    const {toggleModal} = useModalContext();
     const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormDataProps>({
         resolver: zodResolver(formSchema),
     });
 
     const mutation = useMutation(submitForm, {
         onSuccess: (data) => {
-            <Toast message={`Infração cadastrada com sucesso!`} backgroundColor='lightgreen' duration={3000}></Toast>
+            toggleModal();
+            showToast({message: "Infração cadastrada com sucesso!", backgroundColor: "#008000"});
             return data;
         },
         onError: (error: any) => {
-            <Toast message={`Não foi possível cadastrar a nova informação. \nErro`} backgroundColor='rgba(255, 0, 0, 0.5)'></Toast>
+            showToast({message: `Não foi possível cadastrar a nova infração. \nErro ${error.message}`, backgroundColor: "#d83734"});
         },
     });
 

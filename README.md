@@ -2,7 +2,7 @@
 
 ## 📌 Sobre o sistema
 
-### Este sistema foi desenvolvido para facilitar a criação das notificação de autuação por infração de velocidade máxima permitida, desenvolvida inicialmente para a empresa Protelt em Itu/SP.
+### Este sistema foi desenvolvido para facilitar a criação das notificação de autuação por infração de velocidade máxima permitida, sistema desenvolvido para a empresa Protelt em Itu/SP.
 
 ## 🧠 Critérios pontuados para o sistema
 - ✔️ Ser simples, rápido e útil.
@@ -56,9 +56,12 @@
 
 ## 🛈 Como o projeto está estruturado
 
+- `./public/uploads:` Local onde fica as fotos das infrações
+
 - `./src/app:` Este projeto é em Next e usando o App Router, então cada pasta é uma rota. Dentro do app temos: 
   - layout.tsx: Importa estilos globais, configura metadados (como título e descrição), e encapsula a aplicação.
-  - page.tsx: Nossa primeira rota, também chamado como o nosso "home"
+  - page.tsx: Nossa primeira rota, também chamado como o nosso "home".
+  - favicon.ico: Favicon do site.
   - Pasta (pages) que armazena nossas rotas:
     - /infracoes ( Armazena todas as infrações de maneira "reduzida" )
     - /infracaocompleta/[id] ( Local onde fica disponível todos os detalhes da infração que o usuário deseja buscar )
@@ -70,29 +73,41 @@
         - ButtonSection: Agrega os três botões da tela inicial
         - ButtonStructure: "Esqueleto" de cada  botão
         - EditAndDelete: Botões que são da parte de "Editar / Deletar"
+    - Filters:
+        - SearchByPlate: Componente que fica responsável pelo campo de input da opção de buscar por uma placa.
+        - SearchBySpeedRange: Componente responsável por buscar por velocidade
     - Footer: Rodapé, se localiza na tela inicial do sistema
     - Form: Formulário para criação de novas infrações, acionado após clicar no botão de "Criar uma nova infração"
+        - UpdateFields: Onde fica a parte para atualizar uma infração
     - Header: Cabeçalho que se encontra no canto superior do sistema e aparece na tela principal e na de mostrar as infrações de forma reduzida
     - Modal: Esqueleto do modal, criado esse componente para fazer um modal que seja reutilizado de diversas formas
-    - SearchByPlate: Componente que fica responsável pelo campo de input da opção de buscar por uma placa.
+    - Toast: Componente do toast ( Aquela informação que aparece de sucesso ou erro no canto inferior direito quando realiza alguma ação )
 
-- `./src/contexts:` Os contexts são onde separamos os dados que serão compartilhados com toda a aplicação, neste projeto na primeira versão é onde está os contextos de:
+- `./src/contexts:` Os contexts são onde separamos os dados e funções que serão compartilhados com toda a aplicação, neste projeto é onde está os contextos de:
+    - EditAndDeleteContext
+    - FiltersContext
     - ModalContext
-    - SearchByPlateContext
-    - SearchByPrimaryKeyContext
+    - SearchByIdContext
+    - ToastContext
     - Vale ressaltar que o arquivo 'AppProvider.tsx' é o responsável por agrupar todos os providers dos contextos e exportar como um arquivo único. 
 
-- `./src/hooks:` Está nossos hooks personalizados com as partes lógicas da aplicação. As partes lógicas que temos até o momento são:
+- `./src/hooks:` Está nossos hooks personalizados com as partes lógicas de todos os nossos componentes:
     - Apis:
-        - useGetByIdHooks
-        - useGetAllInfringimentHooks
-        - useGetByPlateHooks
-    - Pages
+        - Filters
+            - useGetByPlate
+            - useGetBySpeedRange
+        - useDeleteInfringement
+        - useGetAllInfringement
+        - useGetById
+        - usePostForm
+        - useUpdateInfringement
+    - Buttons:
+        - useButtonsHooks
+        - useEditAndDelete
+    - Pages:
         - useInfracaoCompletaHooks
-        - useInfracaoHooks
-    - useButtonsHooks
 
-- `./src/services:` Pasta que contém as funcionalidades de serviço. Com a primeira versão temos um único arquivo "QueryClient.ts" que serve somente para criarmos um QueryClient e exportar o provider neste próprio arquivo, uma vez que assim podemos usar a diretiva 'use client' no arquivo e não no layout da aplicação.
+- `./src/services:` Pasta que contém as funcionalidades de serviço. Temos um único arquivo chamado "QueryClient.ts" que serve somente para criarmos um QueryClient e exportar o provider neste próprio arquivo, uma vez que assim podemos usar a diretiva 'use client' no arquivo e não no layout da aplicação.
 
 - `./src/styles:` Pasta que contém os arquivos de estilização. Nesta primeira versão temos também um único arquivo, chamado "GlobalStyles.css", este arquivo fica responsável pelos códigos que são de estilização globais do projeto.
 
@@ -157,25 +172,6 @@
     
 
 - Pronto! Todo o site estará funcionado na sua máquina. Porém, caso precise de alguma ajuda em algo entre em contato comigo pelo meu LinkedIn: https://www.linkedin.com/in/guilherme-francisco-pereira-4a3867283
-
-## ⚠️ Informações importantes sobre o projeto ⚠️
-
-### Todos os commits do projeto possuem um readme detalhado do que foi feito naquele commit e também possuem as fotos versão do site naquele momento, então caso deseje ver o processo de criação do código viaje pelos commits e veja as informações!
-
-### Como fazer isso? 
-
-Para você ver o processo de criação e o que foi feito em cada commit siga o passo-a-passo:
-
-#### 1 - Nessa guia em que você está, suba a tela até encontrar embaixo do botão verde um local igual o da foto abaixo e então clique nele
-!['1 passo - Como ver o processo da criação do projeto'](https://github.com/GuilhermeFranciscoPereira/NotificationProtelt_FrontEnd/raw/main/src/assets/GitHub-1step.png)
-
-#### 2 - No lado direito dos commits você encontra clique no simbolo de <> como está na foto e então você irá encontrar como o código estava naquele momento e o readme detalhado daquele momento!
-!['2 passo - Como ver o processo da criação do projeto'](https://github.com/GuilhermeFranciscoPereira/NotificationProtelt_FrontEnd/raw/main/src/assets/GitHub-2step.png)
-
-#### 3 - Depois de encontrar tudo que deseja, caso queira voltar para cá, você irá clicar no local em que a imagem a baixo mostra:
-!['3 passo - Como ver o processo da criação do projeto'](https://github.com/GuilhermeFranciscoPereira/NotificationProtelt_FrontEnd/raw/main/src/assets/GitHub-3step.png)
-
-#### E então clique em main e voltará para cá!
 
 ##
 

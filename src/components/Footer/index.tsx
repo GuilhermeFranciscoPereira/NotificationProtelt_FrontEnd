@@ -1,15 +1,15 @@
-import logoRumoRadares from '../../assets/imagensForTheSite/RumoLogo.png';
-import style from './Footer.module.css';
+import logoRumoRadares from '@/assets/imagensForTheSite/RumoLogo.png';
+import styles from '@/components/Footer/Footer.module.css';
 import Image from "next/image";
 
 export default function Footer(): React.ReactNode {
     return (
-        <footer className={style.footerContainer}>
-            <div className={style.footerContent}>
-                <div className={style.footerLogo}>
+        <footer className={styles.footerContainer}>
+            <div className={styles.footerContent}>
+                <div className={styles.footerLogo}>
                     <Image src={logoRumoRadares} width={200} alt={`Logo da empresa Rumo radares`} quality={100}/>
                 </div>
-                <div className={style.footerContact}>
+                <div className={styles.footerContact}>
                     <h3>Contate a Protelt Sistemas de Segurança</h3>
                     <ul>
                         <li><strong>Telefone: </strong>(11) 4813-8888</li>
@@ -20,7 +20,7 @@ export default function Footer(): React.ReactNode {
                     </ul>
                 </div>
             </div>
-            <div className={style.footerBottom}>
+            <div className={styles.footerBottom}>
                 <p>&copy; Sistema desenvolvido por: Lottus Sistemas</p>
             </div>
         </footer>

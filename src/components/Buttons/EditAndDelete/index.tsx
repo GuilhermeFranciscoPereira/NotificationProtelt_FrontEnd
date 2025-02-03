@@ -1,5 +1,5 @@
+import styles from '@/components/Buttons/EditAndDelete/EditAndDelete.module.css';
 import useEditAndDelete from '@/hooks/Buttons/useEditAndDelete';
-import style from './EditAndDelete.module.css';
 
 type EditAndDeleteProps = {
     autoDaInfracao: number;
@@ -8,13 +8,13 @@ type EditAndDeleteProps = {
 
 export default function EditAndDelete({autoDaInfracao, plate}: EditAndDeleteProps): React.ReactNode {
     const {handleEditFunction, handleDeleteFunction} = useEditAndDelete();
-
+    
     return (
         <>
-        <h2 className={style.h2}>O que deseja fazer com a placa {plate}?</h2>
-        <div className={style.buttonsEditAndDeleteDiv}>
-            <button className={style.editButton} onClick={() => handleEditFunction(autoDaInfracao)}>Editar</button>
-            <button className={style.deleteButton} onClick={() => handleDeleteFunction(autoDaInfracao)}>Deletar</button>
+        <h2 className={styles.h2}>O que deseja fazer com a placa <span style={{textTransform: "uppercase"}}>{plate}</span>?</h2>
+        <div className={styles.buttonsEditAndDeleteDiv}>
+            <button className={styles.editButton} onClick={() => handleEditFunction()}>Editar</button>
+            <button className={styles.deleteButton} onClick={() => handleDeleteFunction(autoDaInfracao)}>Deletar</button>
         </div>
         </>
     )

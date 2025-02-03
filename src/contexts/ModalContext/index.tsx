@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 
 type ModalContextProps = {
-    modalValue: boolean;
+    modalState: boolean;
     modalContent: ReactNode;
     toSetModalContent: (content: ReactNode) => void;
     toggleModal: () => void;
@@ -10,11 +10,11 @@ type ModalContextProps = {
 const ModalContext = createContext<ModalContextProps>({} as ModalContextProps);
 
 const ModalProvider = ({children}: {children: React.ReactNode}): React.ReactNode => {
-    const [modalValue, setModalValue] = useState<boolean>(false);
+    const [modalState, setModalState] = useState<boolean>(false);
     const [modalContent, setModalContent] = useState<ReactNode>();
 
     function toggleModal() {
-        setModalValue(!modalValue);
+        setModalState(!modalState);
     }
 
     function toSetModalContent(content: ReactNode) {
@@ -22,15 +22,14 @@ const ModalProvider = ({children}: {children: React.ReactNode}): React.ReactNode
     }
     
     return (
-        <ModalContext.Provider value={{modalValue, modalContent, toSetModalContent, toggleModal}}>
+        <ModalContext.Provider value={{modalState, modalContent, toSetModalContent, toggleModal}}>
             {children}
         </ModalContext.Provider>
     )
 }
 
 function useModalContext() {
-    const useModalContext = useContext(ModalContext);
-    return useModalContext;
+    return useContext(ModalContext);
 }
 
 export {ModalProvider, useModalContext};

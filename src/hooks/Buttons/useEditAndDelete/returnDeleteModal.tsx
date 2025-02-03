@@ -1,5 +1,4 @@
-'use client';
-import style from '@/components/Buttons/EditAndDelete/EditAndDelete.module.css'
+import styles from '@/components/Buttons/EditAndDelete/EditAndDelete.module.css'
 import useDeleteInfringement from '@/hooks/Apis/useDeleteInfringement';
 
 type ReturnDeleteModalProps = {
@@ -10,9 +9,9 @@ export default function ReturnDeleteModal({autoDaInfracao}: ReturnDeleteModalPro
     const {deleteInfringement} = useDeleteInfringement();
     return (
         <>
-        <h2 className={style.h2}>Você tem certeza que deseja excluir essa infração?</h2>
-        <div className={style.buttonsEditAndDeleteDiv}>
-            <button className={style.deleteButton} onClick={() => {deleteInfringement(autoDaInfracao)}}>Sim, deletar infração</button>
+        <h2 className={styles.h2}>Você tem certeza que deseja excluir essa infração?</h2>
+        <div className={styles.buttonsEditAndDeleteDiv}>
+            <button className={styles.deleteButton} onClick={() => {deleteInfringement(autoDaInfracao)}}>Sim, deletar infração</button>
         </div>
         </>
     )

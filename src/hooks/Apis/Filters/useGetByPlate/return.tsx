@@ -1,18 +1,18 @@
+import { useFiltersContext } from '@/contexts/FiltersContext';
 import useButtonsHooks from '@/hooks/Buttons/useButtonsHooks';
-import styles from '@/hooks/Apis/useGetAllInfringiment/GetAllInfringiment.module.css';
-import useGetAllInfringiment from '@/hooks/Apis/useGetAllInfringiment';
-import useGetById from '@/hooks/Apis/useGetById';
+import useGetById from '@/hooks/Apis/useGetById/index';
 import Image from 'next/image';
+import styles from '@/hooks/Apis/useGetAllInfringiment/GetAllInfringiment.module.css'
 
-export default function GetAllInfringimentReturn(): React.ReactNode {
-    const {isFetching, data} = useGetAllInfringiment();
+export default function GetByPlateReturn(): React.ReactNode {
+    const {FiltersContent} = useFiltersContext();
     const {editAndDeleteInfringement} = useButtonsHooks();
     const {handleSearchByID} = useGetById();
-    
+
     return (
         <>
-        {isFetching && <h1 className={styles.loading}>Não existe nenhuma infração...</h1>}
-        {data?.map((infringement, index) => (
+        {FiltersContent.length === 0 && <h1 className={styles.loading}>Não existe nenhuma infração com esse filtro!</h1>}
+        {FiltersContent?.map((infringement, index) => (
             <div className={styles.cardInfringementDiv} key={index}>
                 <div className='driverInformations'>
                     <h1>Placa: <span style={{textTransform: "uppercase"}}>{infringement.placa}</span></h1>

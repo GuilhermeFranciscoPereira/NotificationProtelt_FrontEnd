@@ -5,6 +5,7 @@ type infringimentsProps = {
     autoDaInfracao: number;
     placa: string;
     medicaoRealizadaKMH: number;
+    localDaInfracao: string;
     quadraLote: string;
     fotoInfracao: string;
 }

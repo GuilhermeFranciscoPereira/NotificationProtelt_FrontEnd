@@ -23,8 +23,7 @@ const EditAndDeleteProvider = ({children}: {children: React.ReactNode}): React.R
 }
 
 function useEditAndDeleteContext() {
-    const useEditAndDeleteContext = useContext(EditAndDeleteContext);
-    return useEditAndDeleteContext;
+    return useContext(EditAndDeleteContext);
 }
 
 export {EditAndDeleteProvider, useEditAndDeleteContext};

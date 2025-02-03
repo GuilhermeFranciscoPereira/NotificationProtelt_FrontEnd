@@ -1,15 +1,15 @@
-import { useSearchByPrimaryKeyContext } from "@/contexts/SearchByPrimaryKey";
 import useGetAllInfringiment from "@/hooks/Apis/useGetAllInfringiment";
+import { useSearchByIdContext } from "@/contexts/SearchByIdContext";
 import { useRouter } from "next/navigation";
 import html2canvas from "html2canvas";
 
 export default function useInfracaoCompletaHook() {
-  const { SearchByPrimaryKeyContent } = useSearchByPrimaryKeyContext();
-  const {data} = useGetAllInfringiment()
+  const { SearchByIdContent } = useSearchByIdContext();
+  const {data} = useGetAllInfringiment();
   const router = useRouter();
 
-  if(SearchByPrimaryKeyContent[0] == undefined) {
-    router.push('/')
+  if(SearchByIdContent[0] == undefined) {
+    router.push('/');
   }
 
   function captureScreenshot(elementId: string) {
@@ -25,14 +25,14 @@ export default function useInfracaoCompletaHook() {
     }
   }
   
-  const filteredData = data?.filter((item) => item.placa == SearchByPrimaryKeyContent[0]?.placa);
-  const platePosition = filteredData &&  1 + filteredData.findIndex((item) => item.autoDaInfracao === SearchByPrimaryKeyContent[0]?.autoDaInfracao);
+  const filteredData = data?.filter((item) => item.placa == SearchByIdContent[0]?.placa);
+  const platePosition = filteredData &&  1 + filteredData.findIndex((item) => item.autoDaInfracao === SearchByIdContent[0]?.autoDaInfracao);
 
-  const dateNotFormated = new Date(SearchByPrimaryKeyContent[0]?.dataEnvio);
+  const dateNotFormated = new Date(SearchByIdContent[0]?.dataEnvio);
   const dateFormated = `${String(dateNotFormated.getDate()).padStart(2, '0')}/${String(dateNotFormated.getMonth() + 1).padStart(2, '0')}/${dateNotFormated.getFullYear()}`;
 
-  const dateAndHourNotFormated = new Date(SearchByPrimaryKeyContent[0]?.dataHoraDaInfracao);
+  const dateAndHourNotFormated = new Date(SearchByIdContent[0]?.dataHoraDaInfracao);
   const dateAndHourFormated = `${String(dateAndHourNotFormated.getDate()).padStart(2, '0')}/${String(dateAndHourNotFormated.getMonth() + 1).padStart(2, '0')}/${dateAndHourNotFormated.getFullYear()} - ${String(dateAndHourNotFormated.getHours()).padStart(2, '0')}:${String(dateAndHourNotFormated.getMinutes()).padStart(2, '0')}`;
 
-  return { captureScreenshot, SearchByPrimaryKeyContent, platePosition, dateFormated, dateAndHourFormated};
+  return { captureScreenshot, SearchByIdContent, platePosition, dateFormated, dateAndHourFormated };
 }
